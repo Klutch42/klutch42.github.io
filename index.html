@@ -1,32 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>Krushna Dash</title>
-  <style>
-    body {
-      font-family: 'Open Sans', serif;
-    }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    h1 {
-      color: black;
-      font-size: 30px;
-    }
 
-    h2 {
-        color: navy;
-        font-size: 22px;
-        font-weight: normal; 
-    }
-    p {
-      color: navy;
-      font-size: 18px;
+  <script src="https://cdn.tailwindcss.com"></script>
 
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Open Sans', 'sans-serif']
+          }
+        }
+      }
     }
-  </style>
+  </script>
 </head>
-<body>
-    <h1> Krushna Dash </h1>
-  <h2>UT Computational Engineering and Mathematics</h2>
-  <p>contact: krushnadash [at] utexas [dot] edu</p>
+<body class="font-sans bg-white text-blue-900 p-6">
+
+  <h1 class="text-black text-[30px] font-bold mb-2">Krushna Dash</h1>
+
+  <h2 class="text-[22px] font-normal mb-1">UT Computational Engineering & Mathematics</h2>
+
+  <p class="text-[18px]">contact: krushnadash [at] utexas [dot] edu</p>
+
 </body>
 </html>
