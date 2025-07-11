@@ -15,63 +15,87 @@
           fontFamily: {
             sans: ['Open Sans', 'sans-serif'],
           },
+          keyframes: {
+            fade: {
+              '0%': { opacity: '0' },
+              '50%': { opacity: '1' },
+              '100%': { opacity: '0' },
+            },
+          },
+          animation: {
+            'fade-transition': 'fade 0.6s ease-in-out',
+          }
         },
       },
     };
   </script>
-
-  <style>
-    html, body {
-      transition: background-color 0.5s ease, color 0.5s ease;
-    }
-  </style>
 </head>
+<body class="font-sans text-blue-900 text-[14px] leading-relaxed h-screen m-0 transition-colors duration-300 bg-white dark:bg-gray-900 relative overflow-hidden">
 
-<body class="font-sans text-blue-900 text-[15px] leading-relaxed h-screen bg-white dark:bg-gray-900">
+  <!-- Transition overlay -->
+  <div id="transitionOverlay" class="pointer-events-none fixed inset-0 z-40 bg-white dark:bg-gray-900 opacity-0"></div>
 
-  <!-- Container for centered content with padding and max-width -->
-  <div class="flex items-center justify-center h-full px-4 py-8">
+  <!-- Toggle Switch Button -->
+  <button id="themeToggle"
+    aria-label="Toggle dark mode"
+    class="absolute top-4 right-4 flex items-center gap-2 px-3 py-1.5 bg-gray-200 text-black dark:bg-gray-800 dark:text-white rounded-full shadow transition-colors duration-300 z-50"
+    onclick="toggleDarkMode()"
+  >
+    <span id="toggleLabel" class="select-none font-medium text-sm">Dark</span>
+    <div class="w-10 h-5 flex items-center bg-white dark:bg-gray-600 rounded-full p-0.5 relative">
+      <div id="toggleThumb" class="bg-gray-800 dark:bg-white w-3.5 h-3.5 rounded-full transition-transform duration-300 transform translate-x-0"></div>
+    </div>
+  </button>
 
-    <!-- Content wrapper with max-width and margins on both sides -->
-    <div class="max-w-screen-lg w-full text-center relative z-10">
-
-      <!-- Button inside content area but aligned with margin -->
-      <button id="themeToggle"
-        aria-label="Toggle dark mode"
-        class="absolute top-4 right-4 flex items-center gap-2 px-3 py-1.5 bg-gray-200 text-black dark:bg-gray-700 dark:text-white rounded-full text-xs shadow transition-colors duration-300"
-        onclick="toggleDarkMode()"
-      >
-        <span id="toggleLabel" class="select-none font-medium">Dark</span>
-        <div class="w-10 h-5 flex items-center bg-white dark:bg-gray-600 rounded-full p-0.5">
-          <div id="toggleThumb" class="bg-gray-800 dark:bg-white w-4 h-4 rounded-full transition-transform duration-300 transform translate-x-0"></div>
-        </div>
-      </button>
-
-      <!-- Main content -->
-      <h1 class="text-3xl font-bold text-black dark:text-white mb-2 mt-8">Krushna Dash</h1>
-      <h2 class="text-xl text-gray-700 dark:text-gray-300 mb-1">UT Computational Engineering + Mathematics</h2>
-      <p class="text-gray-600 dark:text-gray-400">contact: krushnadash [at] utexas [dot] edu</p>
-
+  <div class="flex items-center justify-center h-full px-4 z-10 relative">
+    <div class="text-center">
+      <h1 class="text-2xl font-bold text-black dark:text-white mb-1">Krushna Dash</h1>
+      <h2 class="text-lg font-normal mb-0.5 dark:text-gray-300">UT Computational Engineering + Mathematics</h2>
+      <p class="dark:text-gray-400">contact: krushnadash [at] utexas [dot] edu</p>
     </div>
   </div>
 
   <script>
     const toggleThumb = document.getElementById('toggleThumb');
     const toggleLabel = document.getElementById('toggleLabel');
+    const overlay = document.getElementById('transitionOverlay');
 
     function toggleDarkMode() {
-      const html = document.documentElement;
-      const isDark = html.classList.toggle('dark');
+      overlay.classList.add('opacity-100', 'animate-fade-transition');
 
-      toggleLabel.textContent = isDark ? 'Light' : 'Dark';
-      toggleThumb.classList.toggle('translate-x-5', isDark);
-      toggleThumb.classList.toggle('translate-x-0', !isDark);
+      // Wait briefly for animation before toggling theme
+      setTimeout(() => {
+        const html = document.documentElement;
+        const isDark = html.classList.toggle('dark');
+
+        // Update label text
+        toggleLabel.textContent = isDark ? 'Light' : 'Dark';
+
+        // Move the thumb
+        if (isDark) {
+          toggleThumb.classList.add('translate-x-5');
+          toggleThumb.classList.remove('translate-x-0');
+        } else {
+          toggleThumb.classList.add('translate-x-0');
+          toggleThumb.classList.remove('translate-x-5');
+        }
+      }, 100); // slight delay before toggle
+
+      // Remove overlay after transition completes
+      setTimeout(() => {
+        overlay.classList.remove('opacity-100', 'animate-fade-transition');
+      }, 600);
     }
 
+    // Initialize on page load
     window.addEventListener('DOMContentLoaded', () => {
       const isDark = document.documentElement.classList.contains('dark');
       toggleLabel.textContent = isDark ? 'Light' : 'Dark';
-      toggleThumb.classList.add(isDark ? 'translate-x-5' : 'translate-x-0');
+      if (isDark) {
+        toggleThumb.classList.add('translate-x-5');
+      } else {
+        toggleThumb.classList.add('translate-x-0');
+      }
     });
   </script>
 
