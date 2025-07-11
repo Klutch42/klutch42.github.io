@@ -2,16 +2,11 @@
 <html lang="en">
 <head>
   <title>Krushna Dash</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <!-- Tailwind CSS CDN -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com"></script>
-  
-  <!-- Google Fonts: Open Sans -->
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
 
-  <!-- Tailwind config to use Open Sans -->
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -25,24 +20,41 @@
     };
   </script>
 </head>
-
 <body class="font-sans text-blue-900 text-[15px] leading-relaxed h-screen m-0 transition-colors duration-300">
-  <button onclick="toggleDarkMode()" class="absolute top-4 right-4 px-4 py-2 bg-gray-200 text-black dark:bg-gray-800 dark:text-white rounded">
-    Dark Mode
+
+  <!-- Toggle Switch Button -->
+  <button id="themeToggle"
+    onclick="toggleDarkMode()"
+    class="absolute top-4 right-4 flex items-center gap-2 px-4 py-2 bg-gray-200 text-black dark:bg-gray-800 dark:text-white rounded-full transition-all duration-300 shadow">
+    <span id="toggleLabel">Dark</span>
+    <div class="w-10 h-5 flex items-center bg-white dark:bg-gray-600 rounded-full p-1">
+      <div id="toggleThumb" class="bg-gray-800 dark:bg-white w-4 h-4 rounded-full transition-all duration-300 translate-x-0 dark:translate-x-5"></div>
+    </div>
   </button>
-  
+
+  <!-- Content -->
   <div class="flex items-center justify-center h-full px-6">
     <div class="text-center">
-      <h1 class="text-3xl font-bold text-black mb-2 dark:text-white mb-2">Krushna Dash</h1>
-      <h2 class="text-xl font-normal mb-1 dark:text-gray-300">UT Computational Engineering + Mathematics</h2>
+      <h1 class="text-3xl font-bold text-black dark:text-white mb-2">Krushna Dash</h1>
+      <h2 class="text-xl font-normal mb-1 dark:text-gray-300">UT Computational Engineering + Math</h2>
       <p class="dark:text-gray-400">contact: krushnadash [at] utexas [dot] edu</p>
     </div>
   </div>
 
+  <!-- Script -->
   <script>
-    function toggleDarkMode(){
-      document.documentElement.classList.toggle('dark');
+    function toggleDarkMode() {
+      const html = document.documentElement;
+      const isDark = html.classList.toggle('dark');
+      document.getElementById('toggleLabel').textContent = isDark ? 'Light' : 'Dark';
     }
+
+    // Optional: Set initial label based on existing class
+    window.addEventListener('DOMContentLoaded', () => {
+      const isDark = document.documentElement.classList.contains('dark');
+      document.getElementById('toggleLabel').textContent = isDark ? 'Light' : 'Dark';
+    });
   </script>
+
 </body>
 </html>
