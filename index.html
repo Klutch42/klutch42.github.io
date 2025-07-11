@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
-
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -15,17 +14,34 @@
           fontFamily: {
             sans: ['Open Sans', 'sans-serif'],
           },
+          keyframes: {
+            wipe: {
+              '0%': { transform: 'translateY(-100%)' },
+              '100%': { transform: 'translateY(0)' },
+            },
+            wipeOut: {
+              '0%': { transform: 'translateY(0)' },
+              '100%': { transform: 'translateY(100%)' },
+            },
+          },
+          animation: {
+            'wipe-in': 'wipe 0.4s ease-out forwards',
+            'wipe-out': 'wipeOut 0.4s ease-in forwards',
+          },
         },
       },
     };
   </script>
 </head>
-<body class="font-sans text-blue-900 text-[14px] leading-relaxed h-screen m-0 transition-colors duration-300 bg-white dark:bg-gray-900">
+<body class="font-sans text-blue-900 text-[14px] leading-relaxed h-screen m-0 transition-colors duration-300 bg-white dark:bg-gray-900 relative overflow-hidden">
+
+  <!-- Wipe Transition Overlay -->
+  <div id="transitionOverlay" class="pointer-events-none fixed inset-0 z-40 bg-white dark:bg-gray-900 transform -translate-y-full"></div>
 
   <!-- Toggle Switch Button -->
   <button id="themeToggle"
     aria-label="Toggle dark mode"
-    class="absolute top-4 right-4 flex items-center gap-2 px-3 py-1.5 bg-gray-200 text-black dark:bg-gray-800 dark:text-white rounded-full shadow transition-colors duration-300"
+    class="absolute top-4 right-4 flex items-center gap-2 px-3 py-1.5 bg-gray-200 text-black dark:bg-gray-800 dark:text-white rounded-full shadow transition-colors duration-300 z-50"
     onclick="toggleDarkMode()"
   >
     <span id="toggleLabel" class="select-none font-medium text-sm">Dark</span>
@@ -34,10 +50,10 @@
     </div>
   </button>
 
-  <div class="flex items-center justify-center h-full px-4">
+  <div class="flex items-center justify-center h-full px-4 z-10 relative">
     <div class="text-center">
       <h1 class="text-2xl font-bold text-black dark:text-white mb-1">Krushna Dash</h1>
-      <h2 class="text-lg font-normal mb-0.5 dark:text-gray-300">UT Computational Engineering + Math</h2>
+      <h2 class="text-lg font-normal mb-0.5 dark:text-gray-300">UT Computational Engineering + Mathematics</h2>
       <p class="dark:text-gray-400">contact: krushnadash [at] utexas [dot] edu</p>
     </div>
   </div>
@@ -45,35 +61,38 @@
   <script>
     const toggleThumb = document.getElementById('toggleThumb');
     const toggleLabel = document.getElementById('toggleLabel');
+    const overlay = document.getElementById('transitionOverlay');
 
     function toggleDarkMode() {
-      const html = document.documentElement;
-      const isDark = html.classList.toggle('dark');
+      // Animate in (top to center)
+      overlay.classList.remove('animate-wipe-out');
+      overlay.classList.add('animate-wipe-in');
 
-      // Update label text
-      toggleLabel.textContent = isDark ? 'Light' : 'Dark';
+      setTimeout(() => {
+        const html = document.documentElement;
+        const isDark = html.classList.toggle('dark');
+        toggleLabel.textContent = isDark ? 'Light' : 'Dark';
 
-      // Move the thumb
-      if (isDark) {
-        toggleThumb.classList.add('translate-x-5');
-        toggleThumb.classList.remove('translate-x-0');
-      } else {
-        toggleThumb.classList.add('translate-x-0');
-        toggleThumb.classList.remove('translate-x-5');
-      }
+        // Move the thumb
+        if (isDark) {
+          toggleThumb.classList.add('translate-x-5');
+          toggleThumb.classList.remove('translate-x-0');
+        } else {
+          toggleThumb.classList.add('translate-x-0');
+          toggleThumb.classList.remove('translate-x-5');
+        }
+
+        // Animate out (center to bottom)
+        overlay.classList.remove('animate-wipe-in');
+        overlay.classList.add('animate-wipe-out');
+      }, 300); // Wait until the wipe-in mostly completes
     }
 
-    // Initialize on page load
+    // Initialize toggle on page load
     window.addEventListener('DOMContentLoaded', () => {
       const isDark = document.documentElement.classList.contains('dark');
       toggleLabel.textContent = isDark ? 'Light' : 'Dark';
-      if (isDark) {
-        toggleThumb.classList.add('translate-x-5');
-        toggleThumb.classList.remove('translate-x-0');
-      } else {
-        toggleThumb.classList.add('translate-x-0');
-        toggleThumb.classList.remove('translate-x-5');
-      }
+      toggleThumb.classList.add(isDark ? 'translate-x-5' : 'translate-x-0');
     });
   </script>
 
