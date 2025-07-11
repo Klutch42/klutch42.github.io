@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
+
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -15,19 +16,15 @@
             sans: ['Open Sans', 'sans-serif'],
           },
           keyframes: {
-            wipe: {
-              '0%': { transform: 'translateY(-100%)' },
-              '100%': { transform: 'translateY(0)' },
-            },
-            wipeOut: {
-              '0%': { transform: 'translateY(0)' },
-              '100%': { transform: 'translateY(100%)' },
+            fade: {
+              '0%': { opacity: '0' },
+              '50%': { opacity: '1' },
+              '100%': { opacity: '0' },
             },
           },
           animation: {
-            'wipe-in': 'wipe 0.4s ease-out forwards',
-            'wipe-out': 'wipeOut 0.4s ease-in forwards',
-          },
+            'fade-transition': 'fade 0.6s ease-in-out',
+          }
         },
       },
     };
@@ -35,8 +32,8 @@
 </head>
 <body class="font-sans text-blue-900 text-[14px] leading-relaxed h-screen m-0 transition-colors duration-300 bg-white dark:bg-gray-900 relative overflow-hidden">
 
-  <!-- Wipe Transition Overlay -->
-  <div id="transitionOverlay" class="pointer-events-none fixed inset-0 z-40 bg-white dark:bg-gray-900 transform -translate-y-full"></div>
+  <!-- Transition overlay -->
+  <div id="transitionOverlay" class="pointer-events-none fixed inset-0 z-40 bg-white dark:bg-gray-900 opacity-0"></div>
 
   <!-- Toggle Switch Button -->
   <button id="themeToggle"
@@ -64,13 +61,14 @@
     const overlay = document.getElementById('transitionOverlay');
 
     function toggleDarkMode() {
-      // Animate in (top to center)
-      overlay.classList.remove('animate-wipe-out');
-      overlay.classList.add('animate-wipe-in');
+      overlay.classList.add('opacity-100', 'animate-fade-transition');
 
+      // Wait briefly for animation before toggling theme
       setTimeout(() => {
         const html = document.documentElement;
         const isDark = html.classList.toggle('dark');
+
+        // Update label text
         toggleLabel.textContent = isDark ? 'Light' : 'Dark';
 
         // Move the thumb
@@ -81,18 +79,23 @@
           toggleThumb.classList.add('translate-x-0');
           toggleThumb.classList.remove('translate-x-5');
         }
+      }, 100); // slight delay before toggle
 
-        // Animate out (center to bottom)
-        overlay.classList.remove('animate-wipe-in');
-        overlay.classList.add('animate-wipe-out');
-      }, 300); // Wait until the wipe-in mostly completes
+      // Remove overlay after transition completes
+      setTimeout(() => {
+        overlay.classList.remove('opacity-100', 'animate-fade-transition');
+      }, 600);
     }
 
-    // Initialize toggle on page load
+    // Initialize on page load
     window.addEventListener('DOMContentLoaded', () => {
       const isDark = document.documentElement.classList.contains('dark');
       toggleLabel.textContent = isDark ? 'Light' : 'Dark';
-      toggleThumb.classList.add(isDark ? 'translate-x-5' : 'translate-x-0');
+      if (isDark) {
+        toggleThumb.classList.add('translate-x-5');
+      } else {
+        toggleThumb.classList.add('translate-x-0');
+      }
     });
   </script>
 
