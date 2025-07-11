@@ -3,7 +3,7 @@
 <head>
   <title>Krushna Dash</title>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
 
@@ -24,35 +24,56 @@
 
   <!-- Toggle Switch Button -->
   <button id="themeToggle"
+    aria-label="Toggle dark mode"
+    class="absolute top-4 right-4 flex items-center gap-3 px-4 py-2 bg-gray-200 text-black dark:bg-gray-800 dark:text-white rounded-full shadow transition-colors duration-300"
     onclick="toggleDarkMode()"
-    class="absolute top-4 right-4 flex items-center gap-2 px-4 py-2 bg-gray-200 text-black dark:bg-gray-800 dark:text-white rounded-full transition-all duration-300 shadow">
-    <span id="toggleLabel">Dark</span>
-    <div class="w-10 h-5 flex items-center bg-white dark:bg-gray-600 rounded-full p-1">
-      <div id="toggleThumb" class="bg-gray-800 dark:bg-white w-4 h-4 rounded-full transition-all duration-300 translate-x-0 dark:translate-x-5"></div>
+  >
+    <span id="toggleLabel" class="select-none font-medium">Dark</span>
+    <div class="w-12 h-6 flex items-center bg-white dark:bg-gray-600 rounded-full p-1 relative">
+      <div id="toggleThumb" class="bg-gray-800 dark:bg-white w-4 h-4 rounded-full transition-transform duration-300 transform translate-x-0"></div>
     </div>
   </button>
 
-  <!-- Content -->
   <div class="flex items-center justify-center h-full px-6">
     <div class="text-center">
       <h1 class="text-3xl font-bold text-black dark:text-white mb-2">Krushna Dash</h1>
-      <h2 class="text-xl font-normal mb-1 dark:text-gray-300">UT Computational Engineering + Math</h2>
+      <h2 class="text-xl font-normal mb-1 dark:text-gray-300">UT Computational Engineering + Mathematics</h2>
       <p class="dark:text-gray-400">contact: krushnadash [at] utexas [dot] edu</p>
     </div>
   </div>
 
-  <!-- Script -->
   <script>
+    const toggleThumb = document.getElementById('toggleThumb');
+    const toggleLabel = document.getElementById('toggleLabel');
+
     function toggleDarkMode() {
       const html = document.documentElement;
       const isDark = html.classList.toggle('dark');
-      document.getElementById('toggleLabel').textContent = isDark ? 'Light' : 'Dark';
+
+      // Update label text
+      toggleLabel.textContent = isDark ? 'Light' : 'Dark';
+
+      // Move the thumb
+      if (isDark) {
+        toggleThumb.classList.add('translate-x-6');
+        toggleThumb.classList.remove('translate-x-0');
+      } else {
+        toggleThumb.classList.add('translate-x-0');
+        toggleThumb.classList.remove('translate-x-6');
+      }
     }
 
-    // Optional: Set initial label based on existing class
+    // Initialize on page load
     window.addEventListener('DOMContentLoaded', () => {
       const isDark = document.documentElement.classList.contains('dark');
-      document.getElementById('toggleLabel').textContent = isDark ? 'Light' : 'Dark';
+      toggleLabel.textContent = isDark ? 'Light' : 'Dark';
+      if (isDark) {
+        toggleThumb.classList.add('translate-x-6');
+        toggleThumb.classList.remove('translate-x-0');
+      } else {
+        toggleThumb.classList.add('translate-x-0');
+        toggleThumb.classList.remove('translate-x-6');
+      }
     });
   </script>
 
