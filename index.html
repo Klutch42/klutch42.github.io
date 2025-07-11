@@ -20,24 +20,24 @@
     };
   </script>
 </head>
-<body class="font-sans text-blue-900 text-[15px] leading-relaxed h-screen m-0 transition-colors duration-300 bg-white dark:bg-gray-900">
+<body class="font-sans text-blue-900 text-[14px] leading-relaxed h-screen m-0 transition-colors duration-300 bg-white dark:bg-gray-900">
 
   <!-- Toggle Switch Button -->
   <button id="themeToggle"
     aria-label="Toggle dark mode"
-    class="absolute top-4 right-4 flex items-center gap-3 px-4 py-2 bg-gray-200 text-black dark:bg-gray-800 dark:text-white rounded-full shadow transition-colors duration-300"
+    class="absolute top-4 right-4 flex items-center gap-2 px-3 py-1.5 bg-gray-200 text-black dark:bg-gray-800 dark:text-white rounded-full shadow transition-colors duration-300"
     onclick="toggleDarkMode()"
   >
-    <span id="toggleLabel" class="select-none font-medium">Dark</span>
-    <div class="w-12 h-6 flex items-center bg-white dark:bg-gray-600 rounded-full p-1 relative">
-      <div id="toggleThumb" class="bg-gray-800 dark:bg-white w-4 h-4 rounded-full transition-transform duration-300 transform translate-x-0"></div>
+    <span id="toggleLabel" class="select-none font-medium text-sm">Dark</span>
+    <div class="w-10 h-5 flex items-center bg-white dark:bg-gray-600 rounded-full p-0.5 relative">
+      <div id="toggleThumb" class="bg-gray-800 dark:bg-white w-3.5 h-3.5 rounded-full transition-transform duration-300 transform translate-x-0"></div>
     </div>
   </button>
 
-  <div class="flex items-center justify-center h-full px-6">
+  <div class="flex items-center justify-center h-full px-4">
     <div class="text-center">
-      <h1 class="text-3xl font-bold text-black dark:text-white mb-2">Krushna Dash</h1>
-      <h2 class="text-xl font-normal mb-1 dark:text-gray-300">UT Computational Engineering + Mathematics</h2>
+      <h1 class="text-2xl font-bold text-black dark:text-white mb-1">Krushna Dash</h1>
+      <h2 class="text-lg font-normal mb-0.5 dark:text-gray-300">UT Computational Engineering + Math</h2>
       <p class="dark:text-gray-400">contact: krushnadash [at] utexas [dot] edu</p>
     </div>
   </div>
@@ -55,11 +55,11 @@
 
       // Move the thumb
       if (isDark) {
-        toggleThumb.classList.add('translate-x-6');
+        toggleThumb.classList.add('translate-x-5');
         toggleThumb.classList.remove('translate-x-0');
       } else {
         toggleThumb.classList.add('translate-x-0');
-        toggleThumb.classList.remove('translate-x-6');
+        toggleThumb.classList.remove('translate-x-5');
       }
     }
 
@@ -68,11 +68,11 @@
       const isDark = document.documentElement.classList.contains('dark');
       toggleLabel.textContent = isDark ? 'Light' : 'Dark';
       if (isDark) {
-        toggleThumb.classList.add('translate-x-6');
+        toggleThumb.classList.add('translate-x-5');
         toggleThumb.classList.remove('translate-x-0');
       } else {
         toggleThumb.classList.add('translate-x-0');
-        toggleThumb.classList.remove('translate-x-6');
+        toggleThumb.classList.remove('translate-x-5');
       }
     });
   </script>
