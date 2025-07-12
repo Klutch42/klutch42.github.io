@@ -57,33 +57,38 @@
   </div>
 
   <!-- Projects Section -->
-<div class="px-4 z-10 relative">
-  <h2 class="text-xl font-bold text-black dark:text-white text-center mb-8">Projects</h2>
+  <div class="px-4 z-10 relative mt-12">
+    <h2 class="text-xl font-bold text-black dark:text-white text-center mb-8">Projects</h2>
 
-  <!-- Grid container for projects -->
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-    <!-- Project Template 1 -->
-    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-      <h3 class="text-lg font-semibold text-black dark:text-white mb-3">Project Title 1</h3>
-      <p class="text-sm text-gray-700 dark:text-gray-300 mb-4">
-        A short description of the project, what technologies were used, and any relevant details.
-      </p>
-      <a href="https://github.com/your-github-username/project-1" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline">View on GitHub</a>
+    <div class="flex flex-col space-y-6">
+      <!-- Project 1 -->
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+        <h3 class="text-lg font-semibold text-black dark:text-white mb-3">Project Title 1</h3>
+        <p class="text-sm text-gray-700 dark:text-gray-300 mb-4">
+          A short description of the project, what technologies were used, and any relevant details.
+        </p>
+        <a href="https://github.com/your-github-username/project-1" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline">View on GitHub</a>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+        <h3 class="text-lg font-semibold text-black dark:text-white mb-3">Project Title 2</h3>
+        <p class="text-sm text-gray-700 dark:text-gray-300 mb-4">
+          A brief description of another project, including technologies and key features.
+        </p>
+        <a href="https://github.com/your-github-username/project-2" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline">View on GitHub</a>
+      </div>
+
+      <!-- Additional Project (Add more as necessary) -->
+      <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+        <h3 class="text-lg font-semibold text-black dark:text-white mb-3">Project Title 3</h3>
+        <p class="text-sm text-gray-700 dark:text-gray-300 mb-4">
+          Brief details about the project and its features. A great way to showcase what you worked on.
+        </p>
+        <a href="https://github.com/your-github-username/project-3" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline">View on GitHub</a>
+      </div>
     </div>
-
-    <!-- Project Template 2 -->
-    <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-      <h3 class="text-lg font-semibold text-black dark:text-white mb-3">Project Title 2</h3>
-      <p class="text-sm text-gray-700 dark:text-gray-300 mb-4">
-        A brief description of another project, including technologies and key features.
-      </p>
-      <a href="https://github.com/your-github-username/project-2" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline">View on GitHub</a>
-    </div>
-
-    <!-- Add more project cards as needed -->
   </div>
-</div>
-
 
   <script>
     const toggleThumb = document.getElementById('toggleThumb');
@@ -109,25 +114,3 @@
           toggleThumb.classList.add('translate-x-0');
           toggleThumb.classList.remove('translate-x-5');
         }
-      }, 100); // slight delay before toggle
-
-      // Remove overlay after transition completes
-      setTimeout(() => {
-        overlay.classList.remove('opacity-100', 'animate-fade-transition');
-      }, 600);
-    }
-
-    // Initialize on page load
-    window.addEventListener('DOMContentLoaded', () => {
-      const isDark = document.documentElement.classList.contains('dark');
-      toggleLabel.textContent = isDark ? 'Light' : 'Dark';
-      if (isDark) {
-        toggleThumb.classList.add('translate-x-5');
-      } else {
-        toggleThumb.classList.add('translate-x-0');
-      }
-    });
-  </script>
-
-</body>
-</html>
