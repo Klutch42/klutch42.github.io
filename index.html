@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <title>Krushna Dash</title>
   <meta charset="UTF-8" />
@@ -29,6 +28,16 @@
         },
       },
     };
+  </script>
+
+  <script>
+    // Apply system preference on first load unless overridden
+    const storedTheme = localStorage.getItem('theme');
+    if (storedTheme === 'dark' || (!storedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
   </script>
 </head>
 
@@ -77,8 +86,10 @@
       </div>
 
       <!-- Contact Info (just below projects) -->
-      <div class="text-center mt-6">
-        <p class="text-xs text-gray-500 dark:text-gray-400">contact: krushnadash [at] utexas [dot] edu</p>
+      <div class="text-center mt-4">
+        <p class="text-xs text-gray-500 dark:text-gray-400">
+          contact: <a href="mailto:krushnadash@utexas.edu" class="hover:underline">krushnadash [at] utexas [dot] edu</a>
+        </p>
       </div>
     </div>
   </div>
@@ -95,6 +106,8 @@
       setTimeout(() => {
         const html = document.documentElement;
         const isDark = html.classList.toggle('dark');
+
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
         toggleLabel.textContent = isDark ? 'Light' : 'Dark';
 
         if (isDark) {
@@ -114,14 +127,9 @@
     window.addEventListener('DOMContentLoaded', () => {
       const isDark = document.documentElement.classList.contains('dark');
       toggleLabel.textContent = isDark ? 'Light' : 'Dark';
-      if (isDark) {
-        toggleThumb.classList.add('translate-x-5');
-      } else {
-        toggleThumb.classList.add('translate-x-0');
-      }
+      toggleThumb.classList.add(isDark ? 'translate-x-5' : 'translate-x-0');
     });
   </script>
 
 </body>
-
 </html>
