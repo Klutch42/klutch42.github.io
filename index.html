@@ -34,8 +34,7 @@
 
   <!-- Theme Toggle (Top Right Corner, Outside Content) -->
   <button id="themeToggle"
-    class="fixed top-6 right-6 px-3 py-1.5 rounded-full text-sm bg-gray-800 text-white shadow transition-colors"
-    onclick="toggleDarkMode()">
+    class="fixed top-6 right-6 px-3 py-1.5 rounded-full text-sm bg-gray-800 text-white shadow transition-colors">
     Dark
   </button>
 
@@ -114,7 +113,7 @@
   <script>
     const toggle = document.getElementById('themeToggle');
 
-    function updateLabels(isDark) {
+    function updateLabel(isDark) {
       toggle.textContent = isDark ? 'Light' : 'Dark';
     }
 
@@ -122,13 +121,16 @@
       const html = document.documentElement;
       const isDark = html.classList.toggle('dark');
       localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      updateLabels(isDark);
+      updateLabel(isDark);
     }
+
+    // Attach event listener directly to button
+    toggle.addEventListener('click', toggleDarkMode);
 
     // Initialize label on load
     window.addEventListener('DOMContentLoaded', () => {
       const isDark = document.documentElement.classList.contains('dark');
-      updateLabels(isDark);
+      updateLabel(isDark);
     });
   </script>
 
