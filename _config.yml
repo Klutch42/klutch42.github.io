@@ -1,1 +1,16 @@
-theme: 
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  darkMode: 'class', // <— enables class-based dark mode
+  content: [
+    './**/*.html',   // all HTML files
+    './**/*.js'      // all JS files if using JS templates
+  ],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Open Sans', 'sans-serif'],
+      },
+    },
+  },
+  plugins: [],
+};
