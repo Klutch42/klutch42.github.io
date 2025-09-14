@@ -5,15 +5,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Open+Sans&display=swap" rel="stylesheet" />
 
   <script>
     tailwind.config = {
-      darkMode: 'class', // enable class-based dark mode
       theme: {
         extend: {
+          colors: {
+            'custom-blue': '#1da1f2',
+            'custom-dark': '#0a0a0a',
+            'custom-light': '#f5f5f5',
+            'custom-gray': '#6b7280',
+            'custom-highlight': '#ffcc00',
+          },
           fontFamily: {
-            sans: ['Open Sans', 'sans-serif'],
+            'sans': ['Roboto', 'sans-serif'],
+            'heading': ['Open Sans', 'sans-serif'],
           },
         },
       },
@@ -21,11 +28,11 @@
   </script>
 </head>
 
-<body class="font-sans text-white text-[15px] leading-relaxed min-h-screen bg-black transition-colors duration-300 relative">
+<body class="font-sans text-custom-light bg-custom-dark transition-colors duration-300 relative">
 
   <!-- Theme Toggle (Top Right Corner) -->
   <button id="themeToggle"
-    class="fixed top-6 right-6 px-3 py-1.5 rounded-full text-sm bg-gray-800 text-white shadow transition-colors">
+    class="fixed top-6 right-6 px-3 py-1.5 rounded-full text-sm bg-custom-blue text-custom-light shadow transition-colors">
     Dark
   </button>
 
@@ -34,11 +41,11 @@
 
     <!-- Header -->
     <header class="mb-16">
-      <h1 class="text-3xl font-bold">Krushna Dash</h1>
-      <p class="mt-2 text-base text-gray-400">
+      <h1 class="text-3xl font-heading font-bold text-custom-blue">Krushna Dash</h1>
+      <p class="mt-2 text-base text-custom-gray">
         UT Computational Engineering + Mathematics
       </p>
-      <p class="mt-1 italic text-gray-500">
+      <p class="mt-1 italic text-custom-gray">
         Interested in Probabilistic Machine Learning and Robotics
       </p>
     </header>
@@ -48,20 +55,20 @@
 
       <!-- Projects -->
       <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Projects</h2>
+        <h2 class="text-xl font-heading font-semibold text-custom-highlight">Projects</h2>
         <div>
-          <h3 class="font-medium">Uncertainty Aware Motion Forecasting</h3>
-          <p class="text-sm text-gray-400">
+          <h3 class="font-medium text-custom-blue">Uncertainty Aware Motion Forecasting</h3>
+          <p class="text-sm text-custom-gray">
             Motion prediction for autonomous vehicles with DKFs + Variational RNNs
           </p>
           <a href="https://github.com/Klutch42/Uncertainty-Aware-Motion-Forecasting" 
-             class="text-blue-400 hover:underline text-sm">
+             class="text-custom-blue hover:underline text-sm">
              GitHub (temporarily private)
           </a>
         </div>
         <div>
-          <h3 class="font-medium">Low Latency Cybersecurity Software</h3>
-          <p class="text-sm text-gray-400">
+          <h3 class="font-medium text-custom-blue">Low Latency Cybersecurity Software</h3>
+          <p class="text-sm text-custom-gray">
             Individual project + stealth
           </p>
         </div>
@@ -69,25 +76,25 @@
 
       <!-- Math Notes -->
       <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Math Notes</h2>
-        <ul class="space-y-2 text-sm">
-          <li><a href="#" class="hover:underline">[Template] Measure Theory Notes</a></li>
-          <li><a href="#" class="hover:underline">[Template] Stochastic Processes</a></li>
-          <li><a href="#" class="hover:underline">[Template] Linear Algebra Tricks</a></li>
+        <h2 class="text-xl font-heading font-semibold text-custom-highlight">Math Notes</h2>
+        <ul class="space-y-2 text-sm text-custom-light">
+          <li><a href="#" class="hover:underline text-custom-blue">[Template] Measure Theory Notes</a></li>
+          <li><a href="#" class="hover:underline text-custom-blue">[Template] Stochastic Processes</a></li>
+          <li><a href="#" class="hover:underline text-custom-blue">[Template] Linear Algebra Tricks</a></li>
         </ul>
       </section>
 
       <!-- Blog Posts -->
       <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Blog Posts</h2>
-        <ul class="space-y-2 text-sm">
+        <h2 class="text-xl font-heading font-semibold text-custom-highlight">Blog Posts</h2>
+        <ul class="space-y-2 text-sm text-custom-light">
           <li>
-            <a href="#" class="hover:underline">[Template] Why I like Probabilistic Models</a>
-            <span class="ml-2 text-gray-500 text-xs">Jan 2025</span>
+            <a href="#" class="hover:underline text-custom-blue">[Template] Why I like Probabilistic Models</a>
+            <span class="ml-2 text-custom-gray text-xs">Jan 2025</span>
           </li>
           <li>
-            <a href="#" class="hover:underline">[Template] Robotics + ML: Where they meet</a>
-            <span class="ml-2 text-gray-500 text-xs">Coming soon</span>
+            <a href="#" class="hover:underline text-custom-blue">[Template] Robotics + ML: Where they meet</a>
+            <span class="ml-2 text-custom-gray text-xs">Coming soon</span>
           </li>
         </ul>
       </section>
@@ -95,26 +102,26 @@
     </div>
 
     <!-- Contact -->
-    <footer class="mt-16 text-center text-sm text-gray-500">
+    <footer class="mt-16 text-center text-sm text-custom-gray">
       contact: krushnadash [at] utexas [dot] edu
     </footer>
   </div>
 
-  <!-- Clean Dark/Light Toggle Script -->
+  <!-- Theme Toggle Script -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const html = document.documentElement;
       const toggle = document.getElementById('themeToggle');
 
-      // Initialize from localStorage
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'light') html.classList.remove('dark');
-      else html.classList.add('dark');
+      // Initialize theme from localStorage
+      const storedTheme = localStorage.getItem('theme');
+      if (storedTheme === 'dark') html.classList.add('dark');
+      else html.classList.remove('dark');
 
-      // Set initial button label
+      // Set initial button text
       toggle.textContent = html.classList.contains('dark') ? 'Light' : 'Dark';
 
-      // Toggle function
+      // Toggle theme on click
       toggle.addEventListener('click', () => {
         html.classList.toggle('dark');
         const isDark = html.classList.contains('dark');
