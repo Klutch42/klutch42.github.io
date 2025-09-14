@@ -47,7 +47,7 @@
         </p>
       </div>
 
-      
+      <!-- Theme Toggle (next to name) -->
       <button id="themeToggle"
         class="px-3 py-1.5 rounded-full text-sm bg-gray-800 text-white dark:bg-gray-200 dark:text-black shadow transition-colors"
         onclick="toggleDarkMode()">
@@ -55,10 +55,10 @@
       </button>
     </header>
 
-    
+    <!-- Grid Layout -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-      
+      <!-- Projects -->
       <section class="space-y-4">
         <h2 class="text-xl font-semibold">Projects</h2>
         <div>
@@ -68,7 +68,7 @@
           </p>
           <a href="https://github.com/Klutch42/Uncertainty-Aware-Motion-Forecasting" 
              class="text-blue-400 dark:text-blue-600 hover:underline text-sm">
-             GitHub
+             GitHub (temporarily private)
           </a>
         </div>
         <div>
@@ -79,7 +79,7 @@
         </div>
       </section>
 
-      
+      <!-- Math Notes -->
       <section class="space-y-4">
         <h2 class="text-xl font-semibold">Math Notes</h2>
         <ul class="space-y-2 text-sm">
@@ -89,7 +89,7 @@
         </ul>
       </section>
 
-     
+      <!-- Blog Posts -->
       <section class="space-y-4 flex flex-col justify-between">
         <div>
           <h2 class="text-xl font-semibold">Blog Posts</h2>
@@ -105,7 +105,7 @@
           </ul>
         </div>
 
-        
+        <!-- Theme Toggle (bottom of blog posts) -->
         <button id="themeToggleBottom"
           class="self-start mt-4 px-3 py-1.5 rounded-full text-sm bg-gray-800 text-white dark:bg-gray-200 dark:text-black shadow transition-colors"
           onclick="toggleDarkMode()">
@@ -115,13 +115,13 @@
 
     </div>
 
-  
+    <!-- Contact -->
     <footer class="mt-16 text-center text-sm text-gray-500 dark:text-gray-600">
       contact: krushnadash [at] utexas [dot] edu
     </footer>
   </div>
 
-  
+  <!-- Theme Toggle Script -->
   <script>
     const toggleTop = document.getElementById('themeToggle');
     const toggleBottom = document.getElementById('themeToggleBottom');
@@ -139,7 +139,7 @@
       updateLabels(isDark);
     }
 
-    
+    // Initialize labels on load
     window.addEventListener('DOMContentLoaded', () => {
       const isDark = document.documentElement.classList.contains('dark');
       updateLabels(isDark);
