@@ -9,7 +9,7 @@
 
   <script>
     tailwind.config = {
-      darkMode: 'class',
+      darkMode: 'class', // enable class-based dark mode
       theme: {
         extend: {
           fontFamily: {
@@ -100,23 +100,24 @@
     </footer>
   </div>
 
-  <!-- Theme Toggle Script -->
+  <!-- Clean Dark/Light Toggle Script -->
   <script>
-    window.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {
       const html = document.documentElement;
       const toggle = document.getElementById('themeToggle');
 
-      // Apply stored theme
-      const storedTheme = localStorage.getItem('theme');
-      if (storedTheme === 'light') html.classList.remove('dark');
+      // Initialize from localStorage
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') html.classList.remove('dark');
       else html.classList.add('dark');
 
-      // Initialize label
+      // Set initial button label
       toggle.textContent = html.classList.contains('dark') ? 'Light' : 'Dark';
 
       // Toggle function
       toggle.addEventListener('click', () => {
-        const isDark = html.classList.toggle('dark');
+        html.classList.toggle('dark');
+        const isDark = html.classList.contains('dark');
         localStorage.setItem('theme', isDark ? 'dark' : 'light');
         toggle.textContent = isDark ? 'Light' : 'Dark';
       });
