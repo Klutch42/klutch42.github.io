@@ -21,12 +21,47 @@
   </script>
 
   <script>
+    const root = document.documentElement;
     const storedTheme = localStorage.getItem('theme');
+
+    // Decide initial theme: localStorage > system preference
     if (storedTheme === 'light') {
-      document.documentElement.classList.remove('dark');
+      root.classList.remove('dark');
+    } else if (storedTheme === 'dark') {
+      root.classList.add('dark');
     } else {
-      document.documentElement.classList.add('dark');
+      // Use system preference
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        root.classList.add('dark');
+      } else {
+        root.classList.remove('dark');
+      }
     }
+
+    // Function to update button text based on current mode
+    function updateToggleText() {
+      const button = document.getElementById('themeToggle');
+      if (root.classList.contains('dark')) {
+        button.textContent = 'Light Mode';
+      } else {
+        button.textContent = 'Dark Mode';
+      }
+    }
+
+    // Toggle theme
+    function toggleDarkMode() {
+      if (root.classList.contains('dark')) {
+        root.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      } else {
+        root.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      }
+      updateToggleText();
+    }
+
+    // Run on load
+    window.addEventListener('DOMContentLoaded', updateToggleText);
   </script>
 </head>
 
@@ -77,13 +112,12 @@
         </div>
       </section>
 
-      <!-- Math Notes -->
+      <!-- Notes -->
       <section class="space-y-4">
-        <h2 class="text-xl font-semibold">Math Notes</h2>
+        <h2 class="text-xl font-semibold">Notes</h2>
         <ul class="space-y-2 text-sm">
-          <li><a href="#" class="hover:underline">[Template] Measure Theory Notes</a></li>
-          <li><a href="#" class="hover:underline">[Template] Stochastic Processes</a></li>
-          <li><a href="#" class="hover:underline">[Template] Linear Algebra Tricks</a></li>
+          <li><a href="#" class="hover:underline">Probability</a></li>
+          <li><a href="#" class="hover:underline">Stochastic Eqs</a></li>
         </ul>
       </section>
 
@@ -92,23 +126,7 @@
         <h2 class="text-xl font-semibold">Blog Posts</h2>
         <ul class="space-y-2 text-sm">
           <li>
-            <a href="#" class="hover:underline">[Template] Why I like Probabilistic Models</a>
-            <span class="ml-2 text-gray-500 text-xs">Jan 2025</span>
-          </li>
-          <li>
-            <a href="#" class="hover:underline">[Template] Robotics + ML: Where they meet</a>
+            <a href="#" class="hover:underline">p1</a>
             <span class="ml-2 text-gray-500 text-xs">Coming soon</span>
           </li>
-        </ul>
-      </section>
-
-    </div>
-
-    <!-- Contact -->
-    <footer class="mt-16 text-center text-sm text-gray-500 dark:text-gray-600">
-      contact: krushnadash [at] utexas [dot] edu
-    </footer>
-  </div>
-
-</body>
-</html>
+          <
