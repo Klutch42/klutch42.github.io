@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Krushna Dash</title>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&family=Open+Sans&display=swap" rel="stylesheet" />
 
+  <!-- Tailwind inline config -->
   <script>
     tailwind.config = {
+      darkMode: 'class', // enables dark mode via class
       theme: {
         extend: {
           colors: {
@@ -24,15 +28,13 @@
           },
         },
       },
-    };
+    }
   </script>
 </head>
-
 <body class="font-sans text-custom-light bg-custom-dark transition-colors duration-300 relative">
 
-  <!-- Theme Toggle (Top Right Corner) -->
-  <button id="themeToggle"
-    class="fixed top-6 right-6 px-3 py-1.5 rounded-full text-sm bg-custom-blue text-custom-light shadow transition-colors">
+  <!-- Dark/Light Toggle -->
+  <button id="themeToggle" class="fixed top-6 right-6 px-3 py-1.5 rounded-full text-sm bg-custom-blue text-custom-light shadow transition-colors">
     Dark
   </button>
 
@@ -42,12 +44,8 @@
     <!-- Header -->
     <header class="mb-16">
       <h1 class="text-3xl font-heading font-bold text-custom-blue">Krushna Dash</h1>
-      <p class="mt-2 text-base text-custom-gray">
-        UT Computational Engineering + Mathematics
-      </p>
-      <p class="mt-1 italic text-custom-gray">
-        Interested in Probabilistic Machine Learning and Robotics
-      </p>
+      <p class="mt-2 text-base text-custom-gray">UT Computational Engineering + Mathematics</p>
+      <p class="mt-1 italic text-custom-gray">Interested in Probabilistic Machine Learning and Robotics</p>
     </header>
 
     <!-- Grid Layout -->
@@ -58,19 +56,12 @@
         <h2 class="text-xl font-heading font-semibold text-custom-highlight">Projects</h2>
         <div>
           <h3 class="font-medium text-custom-blue">Uncertainty Aware Motion Forecasting</h3>
-          <p class="text-sm text-custom-gray">
-            Motion prediction for autonomous vehicles with DKFs + Variational RNNs
-          </p>
-          <a href="https://github.com/Klutch42/Uncertainty-Aware-Motion-Forecasting" 
-             class="text-custom-blue hover:underline text-sm">
-             GitHub (temporarily private)
-          </a>
+          <p class="text-sm text-custom-gray">Motion prediction for autonomous vehicles with DKFs + Variational RNNs</p>
+          <a href="https://github.com/Klutch42/Uncertainty-Aware-Motion-Forecasting" class="text-custom-blue hover:underline text-sm">GitHub (temporarily private)</a>
         </div>
         <div>
           <h3 class="font-medium text-custom-blue">Low Latency Cybersecurity Software</h3>
-          <p class="text-sm text-custom-gray">
-            Individual project + stealth
-          </p>
+          <p class="text-sm text-custom-gray">Individual project + stealth</p>
         </div>
       </section>
 
@@ -88,14 +79,8 @@
       <section class="space-y-4">
         <h2 class="text-xl font-heading font-semibold text-custom-highlight">Blog Posts</h2>
         <ul class="space-y-2 text-sm text-custom-light">
-          <li>
-            <a href="#" class="hover:underline text-custom-blue">[Template] Why I like Probabilistic Models</a>
-            <span class="ml-2 text-custom-gray text-xs">Jan 2025</span>
-          </li>
-          <li>
-            <a href="#" class="hover:underline text-custom-blue">[Template] Robotics + ML: Where they meet</a>
-            <span class="ml-2 text-custom-gray text-xs">Coming soon</span>
-          </li>
+          <li><a href="#" class="hover:underline text-custom-blue">[Template] Why I like Probabilistic Models</a><span class="ml-2 text-custom-gray text-xs">Jan 2025</span></li>
+          <li><a href="#" class="hover:underline text-custom-blue">[Template] Robotics + ML: Where they meet</a><span class="ml-2 text-custom-gray text-xs">Coming soon</span></li>
         </ul>
       </section>
 
@@ -107,21 +92,21 @@
     </footer>
   </div>
 
-  <!-- Theme Toggle Script -->
+  <!-- Dark/Light Toggle JS -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const html = document.documentElement;
       const toggle = document.getElementById('themeToggle');
 
-      // Initialize theme from localStorage
-      const storedTheme = localStorage.getItem('theme');
-      if (storedTheme === 'dark') html.classList.add('dark');
+      // Load saved theme
+      const saved = localStorage.getItem('theme');
+      if (saved === 'dark') html.classList.add('dark');
       else html.classList.remove('dark');
 
-      // Set initial button text
+      // Set button label
       toggle.textContent = html.classList.contains('dark') ? 'Light' : 'Dark';
 
-      // Toggle theme on click
+      // Toggle on click
       toggle.addEventListener('click', () => {
         html.classList.toggle('dark');
         const isDark = html.classList.contains('dark');
