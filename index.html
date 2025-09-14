@@ -15,16 +15,6 @@
           fontFamily: {
             sans: ['Open Sans', 'sans-serif'],
           },
-          keyframes: {
-            fade: {
-              '0%': { opacity: '0' },
-              '50%': { opacity: '1' },
-              '100%': { opacity: '0' },
-            },
-          },
-          animation: {
-            'fade-transition': 'fade 0.6s ease-in-out',
-          }
         },
       },
     };
@@ -40,108 +30,90 @@
   </script>
 </head>
 
-<body class="font-sans text-blue-900 text-[14px] leading-relaxed min-h-screen m-0 transition-colors duration-300 bg-white dark:bg-gray-900 relative overflow-hidden">
+<body class="font-sans text-black text-[15px] leading-relaxed min-h-screen bg-white dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
 
-  <!-- Transition overlay -->
-  <div id="transitionOverlay" class="pointer-events-none fixed inset-0 z-40 bg-white dark:bg-gray-900 opacity-0"></div>
+  <!-- Container -->
+  <div class="max-w-3xl mx-auto px-6 pt-12">
 
-  <!-- Toggle Switch Button -->
-  <button id="themeToggle"
-    aria-label="Toggle dark mode"
-    class="absolute top-4 right-4 flex items-center gap-2 px-3 py-1.5 bg-gray-200 text-black dark:bg-gray-800 dark:text-white rounded-full shadow transition-colors duration-300 z-50"
-    onclick="toggleDarkMode()"
-  >
-    <span id="toggleLabel" class="select-none font-medium text-sm">Dark</span>
-    <div class="w-10 h-5 flex items-center bg-white dark:bg-gray-600 rounded-full p-0.5 relative">
-      <div id="toggleThumb" class="bg-gray-800 dark:bg-white w-3.5 h-3.5 rounded-full transition-transform duration-300 transform translate-x-0"></div>
-    </div>
-  </button>
-
-  <!-- Header Section -->
-  <div class="flex items-center justify-center pt-20 px-4 z-10 relative">
-    <div class="text-center mb-10">
-      <h1 class="text-2xl font-bold text-black dark:text-white mb-1">Krushna Dash</h1>
-      <h2 class="text-lg font-normal mb-0.5 dark:text-gray-300">UT Computational Engineering + Mathematics</h2>
-      <p class="text-sm italic text-gray-600 dark:text-gray-400 mt-2">
+    <!-- Header -->
+    <header class="mb-12 text-center">
+      <h1 class="text-3xl font-bold">Krushna Dash</h1>
+      <p class="mt-2 text-base text-gray-600 dark:text-gray-400">
+        UT Computational Engineering + Mathematics
+      </p>
+      <p class="mt-1 italic text-gray-500 dark:text-gray-400">
         Interested in Probabilistic Machine Learning and Robotics
       </p>
-    </div>
-  </div>
+    </header>
 
-  <!-- Projects Section -->
-  <div class="px-4 z-20 relative mt-4 flex justify-center">
-    <div class="w-full max-w-2xl">
-      <h2 class="text-xl font-bold text-black dark:text-white text-center mb-8">Projects</h2>
+    <!-- Navigation -->
+    <nav class="flex justify-center gap-6 mb-10 text-sm font-medium text-gray-700 dark:text-gray-300">
+      <a href="#projects" class="hover:underline">Projects</a>
+      <a href="#blogposts" class="hover:underline">Blogposts</a>
+      <a href="#contact" class="hover:underline">Contact</a>
+    </nav>
 
-      <div class="flex flex-col space-y-6">
-        <!-- Project 1 -->
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-          <h3 class="text-lg font-semibold text-black dark:text-white mb-3">Uncertainty Aware Motion Forecasting using DKFs and Variational RNNs</h3>
-          <p class="text-sm text-gray-700 dark:text-gray-300 mb-4">
-            Individual Project - Improving motion prediction for autonomous vehicles
+    <!-- Projects Section -->
+    <section id="projects" class="mb-12">
+      <h2 class="text-xl font-semibold mb-6">Projects</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="text-lg font-medium">Uncertainty Aware Motion Forecasting</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400">
+            Improving motion prediction for autonomous vehicles with DKFs + Variational RNNs
           </p>
-          <a href="https://github.com/Klutch42/Uncertainty-Aware-Motion-Forecasting" target="_blank" class="text-blue-600 dark:text-blue-400 hover:underline">View on GitHub (temporarily private)</a>
+          <a href="https://github.com/Klutch42/Uncertainty-Aware-Motion-Forecasting" 
+             target="_blank" 
+             class="text-blue-600 dark:text-blue-400 hover:underline text-sm">
+             GitHub (temporarily private)
+          </a>
         </div>
-
-        <!-- Project 2 (Template) -->
-        <div class="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-          <h3 class="text-lg font-semibold text-black dark:text-white mb-3">Low Latency Cybersecurity Software</h3>
-          <p class="text-sm text-gray-700 dark:text-gray-300 mb-4">
-            Individual Project + Stealth
+        <div>
+          <h3 class="text-lg font-medium">Low Latency Cybersecurity Software</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400">
+            Individual project + stealth
           </p>
         </div>
       </div>
+    </section>
 
-      <!-- Contact Info (just below projects) -->
-      <div class="text-center mt-4">
-        <p class="text-xs text-gray-500 dark:text-gray-400 inline-block">
-          contact: krushnadash [at] utexas [dot] edu
-        </p>
+    <!-- Blogposts Section (Template) -->
+    <section id="blogposts" class="mb-12">
+      <h2 class="text-xl font-semibold mb-6">Blogposts</h2>
+      <ul class="space-y-4 text-sm">
+        <li>
+          <a href="#" class="hover:underline">[Template] Why I like Probabilistic Models</a>
+          <span class="ml-2 text-gray-400 text-xs">Jan 2025</span>
+        </li>
+        <li>
+          <a href="#" class="hover:underline">[Template] Robotics + ML: Where they meet</a>
+          <span class="ml-2 text-gray-400 text-xs">Coming soon</span>
+        </li>
+      </ul>
+    </section>
 
-        <span class="text-xs text-gray-400 dark:text-gray-500 mx-2">❖</span>
-
-        <button class="text-xs text-blue-600 dark:text-blue-400 hover:underline inline-block">
-          view my engineering projects!
-        </button>
-      </div>
-    </div>
+    <!-- Contact -->
+    <section id="contact" class="text-center">
+      <p class="text-sm text-gray-500 dark:text-gray-400">
+        contact: krushnadash [at] utexas [dot] edu
+      </p>
+    </section>
   </div>
 
-  <!-- Theme Toggle Script -->
+  <!-- Theme Toggle -->
+  <button id="themeToggle"
+    class="fixed bottom-4 right-4 bg-gray-200 dark:bg-gray-700 text-black dark:text-white px-3 py-1.5 rounded-full text-sm shadow"
+    onclick="toggleDarkMode()">
+    Toggle Theme
+  </button>
+
   <script>
-    const toggleThumb = document.getElementById('toggleThumb');
-    const toggleLabel = document.getElementById('toggleLabel');
-    const overlay = document.getElementById('transitionOverlay');
-
+    const toggleBtn = document.getElementById('themeToggle');
     function toggleDarkMode() {
-      overlay.classList.add('opacity-100', 'animate-fade-transition');
-
-      setTimeout(() => {
-        const html = document.documentElement;
-        const isDark = html.classList.toggle('dark');
-
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        toggleLabel.textContent = isDark ? 'Light' : 'Dark';
-
-        if (isDark) {
-          toggleThumb.classList.add('translate-x-5');
-          toggleThumb.classList.remove('translate-x-0');
-        } else {
-          toggleThumb.classList.add('translate-x-0');
-          toggleThumb.classList.remove('translate-x-5');
-        }
-      }, 100);
-
-      setTimeout(() => {
-        overlay.classList.remove('opacity-100', 'animate-fade-transition');
-      }, 600);
+      const html = document.documentElement;
+      const isDark = html.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
     }
-
-    window.addEventListener('DOMContentLoaded', () => {
-      const isDark = document.documentElement.classList.contains('dark');
-      toggleLabel.textContent = isDark ? 'Light' : 'Dark';
-      toggleThumb.classList.add(isDark ? 'translate-x-5' : 'translate-x-0');
-    });
   </script>
 
 </body>
