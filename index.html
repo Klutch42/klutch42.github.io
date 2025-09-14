@@ -103,5 +103,14 @@
     </footer>
   </div>
 
+  <!-- Theme Toggle Script -->
+  <script>
+    function toggleDarkMode() {
+      const html = document.documentElement;
+      const isDark = html.classList.toggle('dark');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    }
+  </script>
+
 </body>
 </html>
