@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
-
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -19,59 +18,20 @@
       },
     };
   </script>
-
   <script>
-    const root = document.documentElement;
     const storedTheme = localStorage.getItem('theme');
-
-    // Decide initial theme: localStorage > system preference
     if (storedTheme === 'light') {
-      root.classList.remove('dark');
-    } else if (storedTheme === 'dark') {
-      root.classList.add('dark');
+      document.documentElement.classList.remove('dark');
     } else {
-      // Use system preference
-      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        root.classList.add('dark');
-      } else {
-        root.classList.remove('dark');
-      }
+      document.documentElement.classList.add('dark');
     }
-
-    // Function to update button text based on current mode (show current state, not opposite)
-    function updateToggleText() {
-      const button = document.getElementById('themeToggle');
-      if (root.classList.contains('dark')) {
-        button.textContent = 'Dark Mode';
-      } else {
-        button.textContent = 'Light Mode';
-      }
-      button.classList.remove('hidden'); // show once text is set
-    }
-
-    // Toggle theme
-    function toggleDarkMode() {
-      if (root.classList.contains('dark')) {
-        root.classList.remove('dark');
-        localStorage.setItem('theme', 'light');
-      } else {
-        root.classList.add('dark');
-        localStorage.setItem('theme', 'dark');
-      }
-      updateToggleText();
-    }
-
-    // Run on load
-    window.addEventListener('DOMContentLoaded', updateToggleText);
   </script>
 </head>
-
 <body class="font-sans text-white text-[15px] leading-relaxed min-h-screen bg-black dark:bg-white dark:text-black transition-colors duration-300">
 
-  <!-- Theme Toggle (top-right corner, hidden until JS sets text) -->
-  <button id="themeToggle"
-    class="absolute top-4 right-4 px-3 py-1.5 rounded-full text-sm bg-gray-800 text-white dark:bg-gray-200 dark:text-black shadow transition-colors hidden"
-    onclick="toggleDarkMode()">
+  <!-- Theme Toggle (top-right corner) -->
+  <button id="themeToggle" class="absolute top-4 right-4 px-3 py-1.5 rounded-full text-sm bg-gray-800 text-white dark:bg-gray-200 dark:text-black shadow transition-colors" onclick="toggleDarkMode()">
+    Toggle
   </button>
 
   <!-- Main Container -->
@@ -99,8 +59,7 @@
           <p class="text-sm text-gray-400 dark:text-gray-600">
             Motion prediction for autonomous vehicles with DKFs + Variational RNNs
           </p>
-          <a href="https://github.com/Klutch42/Uncertainty-Aware-Motion-Forecasting" 
-             class="text-blue-400 dark:text-blue-600 hover:underline text-sm">
+          <a href="https://github.com/Klutch42/Uncertainty-Aware-Motion-Forecasting" class="text-blue-400 dark:text-blue-600 hover:underline text-sm">
              GitHub (temporarily private)
           </a>
         </div>
