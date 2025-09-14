@@ -22,93 +22,96 @@
 
   <script>
     const storedTheme = localStorage.getItem('theme');
-    if (storedTheme === 'dark' || (!storedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark');
-    } else {
+    if (storedTheme === 'light') {
       document.documentElement.classList.remove('dark');
+    } else {
+      document.documentElement.classList.add('dark');
     }
   </script>
 </head>
 
-<body class="font-sans text-black text-[15px] leading-relaxed min-h-screen bg-white dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+<body class="font-sans text-white text-[15px] leading-relaxed min-h-screen bg-black dark:bg-white dark:text-black transition-colors duration-300">
 
-  <!-- Container -->
-  <div class="max-w-3xl mx-auto px-6 pt-12">
+  <!-- Theme Toggle (top-right corner) -->
+  <button id="themeToggle"
+    class="absolute top-4 right-4 px-3 py-1.5 rounded-full text-sm bg-gray-800 text-white dark:bg-gray-200 dark:text-black shadow transition-colors"
+    onclick="toggleDarkMode()">
+    Toggle
+  </button>
+
+  <!-- Main Container -->
+  <div class="max-w-4xl mx-auto px-6 pt-20">
 
     <!-- Header -->
-    <header class="mb-12 text-center">
+    <header class="mb-16 text-center">
       <h1 class="text-3xl font-bold">Krushna Dash</h1>
-      <p class="mt-2 text-base text-gray-600 dark:text-gray-400">
+      <p class="mt-2 text-base text-gray-400 dark:text-gray-600">
         UT Computational Engineering + Mathematics
       </p>
-      <p class="mt-1 italic text-gray-500 dark:text-gray-400">
+      <p class="mt-1 italic text-gray-500 dark:text-gray-500">
         Interested in Probabilistic Machine Learning and Robotics
       </p>
     </header>
 
-    <!-- Navigation -->
-    <nav class="flex justify-center gap-6 mb-10 text-sm font-medium text-gray-700 dark:text-gray-300">
-      <a href="#projects" class="hover:underline">Projects</a>
-      <a href="#blogposts" class="hover:underline">Blogposts</a>
-      <a href="#contact" class="hover:underline">Contact</a>
-    </nav>
+    <!-- Grid Layout -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-    <!-- Projects Section -->
-    <section id="projects" class="mb-12">
-      <h2 class="text-xl font-semibold mb-6">Projects</h2>
-      <div class="space-y-6">
+      <!-- Projects -->
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold">Projects</h2>
         <div>
-          <h3 class="text-lg font-medium">Uncertainty Aware Motion Forecasting</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-400">
-            Improving motion prediction for autonomous vehicles with DKFs + Variational RNNs
+          <h3 class="font-medium">Uncertainty Aware Motion Forecasting</h3>
+          <p class="text-sm text-gray-400 dark:text-gray-600">
+            Motion prediction for autonomous vehicles with DKFs + Variational RNNs
           </p>
           <a href="https://github.com/Klutch42/Uncertainty-Aware-Motion-Forecasting" 
-             target="_blank" 
-             class="text-blue-600 dark:text-blue-400 hover:underline text-sm">
+             class="text-blue-400 dark:text-blue-600 hover:underline text-sm">
              GitHub (temporarily private)
           </a>
         </div>
         <div>
-          <h3 class="text-lg font-medium">Low Latency Cybersecurity Software</h3>
-          <p class="text-sm text-gray-600 dark:text-gray-400">
+          <h3 class="font-medium">Low Latency Cybersecurity Software</h3>
+          <p class="text-sm text-gray-400 dark:text-gray-600">
             Individual project + stealth
           </p>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Blogposts Section (Template) -->
-    <section id="blogposts" class="mb-12">
-      <h2 class="text-xl font-semibold mb-6">Blogposts</h2>
-      <ul class="space-y-4 text-sm">
-        <li>
-          <a href="#" class="hover:underline">[Template] Why I like Probabilistic Models</a>
-          <span class="ml-2 text-gray-400 text-xs">Jan 2025</span>
-        </li>
-        <li>
-          <a href="#" class="hover:underline">[Template] Robotics + ML: Where they meet</a>
-          <span class="ml-2 text-gray-400 text-xs">Coming soon</span>
-        </li>
-      </ul>
-    </section>
+      <!-- Math Notes -->
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold">Math Notes</h2>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="hover:underline">[Template] Measure Theory Notes</a></li>
+          <li><a href="#" class="hover:underline">[Template] Stochastic Processes</a></li>
+          <li><a href="#" class="hover:underline">[Template] Linear Algebra Tricks</a></li>
+        </ul>
+      </section>
+
+      <!-- Blog Posts -->
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold">Blog Posts</h2>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href="#" class="hover:underline">[Template] Why I like Probabilistic Models</a>
+            <span class="ml-2 text-gray-500 text-xs">Jan 2025</span>
+          </li>
+          <li>
+            <a href="#" class="hover:underline">[Template] Robotics + ML: Where they meet</a>
+            <span class="ml-2 text-gray-500 text-xs">Coming soon</span>
+          </li>
+        </ul>
+      </section>
+
+    </div>
 
     <!-- Contact -->
-    <section id="contact" class="text-center">
-      <p class="text-sm text-gray-500 dark:text-gray-400">
-        contact: krushnadash [at] utexas [dot] edu
-      </p>
-    </section>
+    <footer class="mt-16 text-center text-sm text-gray-500 dark:text-gray-600">
+      contact: krushnadash [at] utexas [dot] edu
+    </footer>
   </div>
 
-  <!-- Theme Toggle -->
-  <button id="themeToggle"
-    class="fixed bottom-4 right-4 bg-gray-200 dark:bg-gray-700 text-black dark:text-white px-3 py-1.5 rounded-full text-sm shadow"
-    onclick="toggleDarkMode()">
-    Toggle Theme
-  </button>
-
+  <!-- Theme Toggle Script -->
   <script>
-    const toggleBtn = document.getElementById('themeToggle');
     function toggleDarkMode() {
       const html = document.documentElement;
       const isDark = html.classList.toggle('dark');
@@ -118,4 +121,3 @@
 
 </body>
 </html>
-
