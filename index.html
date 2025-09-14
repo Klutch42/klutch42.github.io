@@ -30,13 +30,20 @@
   </script>
 </head>
 
-<body class="font-sans text-white text-[15px] leading-relaxed min-h-screen bg-black transition-colors duration-300">
+<body class="font-sans text-white text-[15px] leading-relaxed min-h-screen bg-black transition-colors duration-300 relative">
+
+  <!-- Theme Toggle (Top Right Corner) -->
+  <button id="themeToggle"
+    class="fixed top-6 right-6 px-3 py-1.5 rounded-full text-sm bg-gray-800 text-white shadow transition-colors"
+    onclick="toggleDarkMode()">
+    Dark
+  </button>
 
   <!-- Main Container -->
-  <div class="max-w-4xl mx-auto px-6 pt-20">
+  <div class="max-w-4xl mx-auto px-6 pt-20 text-center">
 
     <!-- Header -->
-    <header class="mb-16 text-left">
+    <header class="mb-16">
       <h1 class="text-3xl font-bold">Krushna Dash</h1>
       <p class="mt-2 text-base text-gray-400">
         UT Computational Engineering + Mathematics
@@ -47,7 +54,7 @@
     </header>
 
     <!-- Grid Layout -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
 
       <!-- Projects -->
       <section class="space-y-4">
@@ -81,27 +88,18 @@
       </section>
 
       <!-- Blog Posts -->
-      <section class="space-y-4 flex flex-col justify-between">
-        <div>
-          <h2 class="text-xl font-semibold">Blog Posts</h2>
-          <ul class="space-y-2 text-sm">
-            <li>
-              <a href="#" class="hover:underline">[Template] Why I like Probabilistic Models</a>
-              <span class="ml-2 text-gray-500 text-xs">Jan 2025</span>
-            </li>
-            <li>
-              <a href="#" class="hover:underline">[Template] Robotics + ML: Where they meet</a>
-              <span class="ml-2 text-gray-500 text-xs">Coming soon</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Theme Toggle -->
-        <button id="themeToggleBottom"
-          class="self-start mt-4 px-3 py-1.5 rounded-full text-sm bg-gray-800 text-white shadow transition-colors"
-          onclick="toggleDarkMode()">
-          Dark
-        </button>
+      <section class="space-y-4">
+        <h2 class="text-xl font-semibold">Blog Posts</h2>
+        <ul class="space-y-2 text-sm">
+          <li>
+            <a href="#" class="hover:underline">[Template] Why I like Probabilistic Models</a>
+            <span class="ml-2 text-gray-500 text-xs">Jan 2025</span>
+          </li>
+          <li>
+            <a href="#" class="hover:underline">[Template] Robotics + ML: Where they meet</a>
+            <span class="ml-2 text-gray-500 text-xs">Coming soon</span>
+          </li>
+        </ul>
       </section>
 
     </div>
@@ -114,11 +112,11 @@
 
   <!-- Theme Toggle Script -->
   <script>
-    const toggleBottom = document.getElementById('themeToggleBottom');
+    const toggle = document.getElementById('themeToggle');
 
     function updateLabels(isDark) {
       const label = isDark ? 'Light' : 'Dark';
-      toggleBottom.textContent = label;
+      toggle.textContent = label;
     }
 
     function toggleDarkMode() {
@@ -128,7 +126,7 @@
       updateLabels(isDark);
     }
 
-    // Initialize labels on load
+    // Initialize label on load
     window.addEventListener('DOMContentLoaded', () => {
       const isDark = document.documentElement.classList.contains('dark');
       updateLabels(isDark);
