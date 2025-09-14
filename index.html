@@ -38,14 +38,15 @@
       }
     }
 
-    // Function to update button text based on current mode
+    // Function to update button text based on current mode (show current state, not opposite)
     function updateToggleText() {
       const button = document.getElementById('themeToggle');
       if (root.classList.contains('dark')) {
-        button.textContent = 'Light Mode';
-      } else {
         button.textContent = 'Dark Mode';
+      } else {
+        button.textContent = 'Light Mode';
       }
+      button.classList.remove('hidden'); // show once text is set
     }
 
     // Toggle theme
@@ -67,11 +68,10 @@
 
 <body class="font-sans text-white text-[15px] leading-relaxed min-h-screen bg-black dark:bg-white dark:text-black transition-colors duration-300">
 
-  <!-- Theme Toggle (top-right corner) -->
+  <!-- Theme Toggle (top-right corner, hidden until JS sets text) -->
   <button id="themeToggle"
-    class="absolute top-4 right-4 px-3 py-1.5 rounded-full text-sm bg-gray-800 text-white dark:bg-gray-200 dark:text-black shadow transition-colors"
+    class="absolute top-4 right-4 px-3 py-1.5 rounded-full text-sm bg-gray-800 text-white dark:bg-gray-200 dark:text-black shadow transition-colors hidden"
     onclick="toggleDarkMode()">
-    Toggle
   </button>
 
   <!-- Main Container -->
@@ -129,4 +129,20 @@
             <a href="#" class="hover:underline">p1</a>
             <span class="ml-2 text-gray-500 text-xs">Coming soon</span>
           </li>
-          <
+          <li>
+            <a href="#" class="hover:underline">p2</a>
+            <span class="ml-2 text-gray-500 text-xs">Coming soon</span>
+          </li>
+        </ul>
+      </section>
+
+    </div>
+
+    <!-- Contact -->
+    <footer class="mt-16 text-center text-sm text-gray-500 dark:text-gray-600">
+      contact: krushnadash [at] utexas [dot] edu
+    </footer>
+  </div>
+
+</body>
+</html>
