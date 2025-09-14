@@ -30,29 +30,20 @@
   </script>
 </head>
 
-<body class="font-sans text-white text-[15px] leading-relaxed min-h-screen bg-black dark:bg-white dark:text-black transition-colors duration-300">
+<body class="font-sans text-white text-[15px] leading-relaxed min-h-screen bg-black transition-colors duration-300">
 
   <!-- Main Container -->
   <div class="max-w-4xl mx-auto px-6 pt-20">
 
     <!-- Header -->
-    <header class="mb-16 flex items-center justify-between">
-      <div class="text-left">
-        <h1 class="text-3xl font-bold">Krushna Dash</h1>
-        <p class="mt-2 text-base text-gray-400 dark:text-gray-600">
-          UT Computational Engineering + Mathematics
-        </p>
-        <p class="mt-1 italic text-gray-500 dark:text-gray-500">
-          Interested in Probabilistic Machine Learning and Robotics
-        </p>
-      </div>
-
-      <!-- Theme Toggle (next to name) -->
-      <button id="themeToggle"
-        class="px-3 py-1.5 rounded-full text-sm bg-gray-800 text-white dark:bg-gray-200 dark:text-black shadow transition-colors"
-        onclick="toggleDarkMode()">
-        Dark
-      </button>
+    <header class="mb-16 text-left">
+      <h1 class="text-3xl font-bold">Krushna Dash</h1>
+      <p class="mt-2 text-base text-gray-400">
+        UT Computational Engineering + Mathematics
+      </p>
+      <p class="mt-1 italic text-gray-500">
+        Interested in Probabilistic Machine Learning and Robotics
+      </p>
     </header>
 
     <!-- Grid Layout -->
@@ -63,17 +54,17 @@
         <h2 class="text-xl font-semibold">Projects</h2>
         <div>
           <h3 class="font-medium">Uncertainty Aware Motion Forecasting</h3>
-          <p class="text-sm text-gray-400 dark:text-gray-600">
+          <p class="text-sm text-gray-400">
             Motion prediction for autonomous vehicles with DKFs + Variational RNNs
           </p>
           <a href="https://github.com/Klutch42/Uncertainty-Aware-Motion-Forecasting" 
-             class="text-blue-400 dark:text-blue-600 hover:underline text-sm">
+             class="text-blue-400 hover:underline text-sm">
              GitHub (temporarily private)
           </a>
         </div>
         <div>
           <h3 class="font-medium">Low Latency Cybersecurity Software</h3>
-          <p class="text-sm text-gray-400 dark:text-gray-600">
+          <p class="text-sm text-gray-400">
             Individual project + stealth
           </p>
         </div>
@@ -105,9 +96,9 @@
           </ul>
         </div>
 
-        <!-- Theme Toggle (bottom of blog posts) -->
+        <!-- Theme Toggle -->
         <button id="themeToggleBottom"
-          class="self-start mt-4 px-3 py-1.5 rounded-full text-sm bg-gray-800 text-white dark:bg-gray-200 dark:text-black shadow transition-colors"
+          class="self-start mt-4 px-3 py-1.5 rounded-full text-sm bg-gray-800 text-white shadow transition-colors"
           onclick="toggleDarkMode()">
           Dark
         </button>
@@ -116,19 +107,17 @@
     </div>
 
     <!-- Contact -->
-    <footer class="mt-16 text-center text-sm text-gray-500 dark:text-gray-600">
+    <footer class="mt-16 text-center text-sm text-gray-500">
       contact: krushnadash [at] utexas [dot] edu
     </footer>
   </div>
 
   <!-- Theme Toggle Script -->
   <script>
-    const toggleTop = document.getElementById('themeToggle');
     const toggleBottom = document.getElementById('themeToggleBottom');
 
     function updateLabels(isDark) {
       const label = isDark ? 'Light' : 'Dark';
-      toggleTop.textContent = label;
       toggleBottom.textContent = label;
     }
 
