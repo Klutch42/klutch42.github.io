@@ -3,9 +3,10 @@ const About = () => {
     <div className="min-h-screen pt-24 px-6 pb-12">
       <div className="max-w-2xl mx-auto">
         <section className="py-16 animate-fade-in">
-          <h1 className="text-4xl md:text-5xl font-bold mb-8 tracking-tight">
-            Hi, I'm [Your Name]
+          <h1 className="text-3xl md:text-4xl font-semibold mb-8 tracking-wider font-mono text-gray-200">
+             Krushna Dash
           </h1>
+
           
           <div className="space-y-4 text-base leading-relaxed text-muted-foreground">
             <p>
