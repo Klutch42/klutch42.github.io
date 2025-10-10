@@ -4,8 +4,8 @@ const About = () => {
       <div className="max-w-2xl mx-auto">
         <section className="py-16 animate-fade-in">
           <h1 className="text-3xl md:text-4xl font-semibold mb-8 tracking-wider font-mono text-gray-200">
-             Krushna Dash
-          </h1>
+  Krushna Dash
+</h1>
 
           
           <div className="space-y-4 text-base leading-relaxed text-muted-foreground">
