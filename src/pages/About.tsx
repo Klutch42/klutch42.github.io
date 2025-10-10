@@ -1,14 +1,13 @@
 const About = () => {
   return (
-    <div className="min-h-screen pt-24 px-6 pb-12">
+    <div className="min-h-screen pt-24 px-6 pb-12 bg-gray-900">
       <div className="max-w-2xl mx-auto">
         <section className="py-16 animate-fade-in">
-          <h1 className="text-3xl md:text-4xl font-semibold mb-8 tracking-wider font-mono text-gray-200">
-  Krushna Dash
-</h1>
+          <h1 className="text-4xl font-bold mb-8 text-red-500">
+            Krushna Dash
+          </h1>
 
-          
-          <div className="space-y-4 text-base leading-relaxed text-muted-foreground">
+          <div className="space-y-4 text-base leading-relaxed text-white">
             <p>
               I'm a software engineer and AI specialist with a passion for building elegant solutions 
               at the intersection of technology and artificial intelligence.
@@ -32,19 +31,19 @@ const About = () => {
             </p>
           </div>
 
-          <div className="mt-12 pt-8 border-t border-border">
+          <div className="mt-12 pt-8 border-t border-gray-700">
             <div className="flex gap-8 text-sm">
               <a
                 href="mailto:krushnadash@utexas.edu"
-                className="hover:text-foreground transition-colors text-muted-foreground"
+                className="hover:text-yellow-300 transition-colors text-white"
               >
                 Email
               </a>
               <a
-                href="github.com/Klutch42"
+                href="https://github.com/Klutch42"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-foreground transition-colors text-muted-foreground"
+                className="hover:text-yellow-300 transition-colors text-white"
               >
                 GitHub
               </a>
@@ -52,7 +51,7 @@ const About = () => {
                 href="https://linkedin.com/in/krushna-dash"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-foreground transition-colors text-muted-foreground"
+                className="hover:text-yellow-300 transition-colors text-white"
               >
                 LinkedIn
               </a>
@@ -60,7 +59,7 @@ const About = () => {
                 href="https://twitter.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-foreground transition-colors text-muted-foreground"
+                className="hover:text-yellow-300 transition-colors text-white"
               >
                 Twitter
               </a>
