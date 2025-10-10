@@ -1,10 +1,5 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+import { createRoot } from "react-dom/client";
+import App from "./App.tsx";
+import "./index.css";
 
-const root = ReactDOM.createRoot(document.getElementById("root")!);
-
-root.render(
-  <div style={{ background: "black", color: "white", padding: "2rem" }}>
-    <h1>DEV TEST — Hello World!</h1>
-  </div>
-);
+createRoot(document.getElementById("root")!).render(<App />);
