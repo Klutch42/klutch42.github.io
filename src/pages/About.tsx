@@ -35,13 +35,13 @@ const About = () => {
           <div className="mt-12 pt-8 border-t border-border">
             <div className="flex gap-8 text-sm">
               <a
-                href="mailto:your.email@example.com"
+                href="mailto:krushnadash@utexas.edu"
                 className="hover:text-foreground transition-colors text-muted-foreground"
               >
                 Email
               </a>
               <a
-                href="https://github.com"
+                href="github.com/Klutch42"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-foreground transition-colors text-muted-foreground"
@@ -49,7 +49,7 @@ const About = () => {
                 GitHub
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://linkedin.com/in/krushna-dash"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-foreground transition-colors text-muted-foreground"
