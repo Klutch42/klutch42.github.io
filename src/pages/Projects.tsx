@@ -9,7 +9,7 @@ interface Project {
 
 const projects: Project[] = [
   {
-    title: "Neural Network Optimizer",
+    title: "Uncertainty Aware Motion Forecaster using Deep Kalman Filters",
     category: "AI/ML",
     description: "Deep learning framework optimization tool that reduces training time by 40%",
     tags: ["Python", "TensorFlow", "CUDA"],
