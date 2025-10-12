@@ -4,7 +4,7 @@ const About = () => {
       <div className="max-w-2xl mx-auto">
         <section className="py-16 animate-fade-in">
           <h1 className="text-4xl font-bold mb-8 text-red-500">
-            Krushna Dash
+            TEST UPDATE 123
           </h1>
 
           <div className="space-y-4 text-base leading-relaxed text-white">
