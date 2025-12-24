@@ -6,7 +6,6 @@
   <title>Krushna Dash</title>
   <link rel="icon" type="image/png" href="favicon.png">
 
-
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
@@ -14,11 +13,11 @@
   <!-- Tailwind inline config -->
   <script>
     tailwind.config = {
-      darkMode: 'class', // enable dark mode via class
+      darkMode: 'class',
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Open Sans', 'sans-serif'], // original font
+            sans: ['Open Sans', 'sans-serif'],
           },
         },
       },
@@ -28,29 +27,45 @@
 
 <body class="font-sans text-white bg-black dark:bg-white dark:text-black transition-colors duration-300 relative">
 
-  <!-- Theme Toggle (Top Right Corner) -->
+  <!-- Navigation Bar -->
+  <nav class="fixed top-0 left-0 w-full bg-black/80 dark:bg-white/80 backdrop-blur border-b border-gray-800 dark:border-gray-200 z-40">
+    <div class="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
+      <span class="font-semibold text-sm">Krushna Dash</span>
+      <div class="flex space-x-6 text-sm text-gray-400 dark:text-gray-600">
+        <a href="#projects" class="hover:text-white dark:hover:text-black">Projects</a>
+        <a href="#notes" class="hover:text-white dark:hover:text-black">Notes & Blog</a>
+        <a href="#about" class="hover:text-white dark:hover:text-black">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Theme Toggle -->
   <button id="themeToggle"
-          class="fixed top-6 right-6 px-3 py-1.5 rounded-full text-sm bg-gray-800 text-white dark:bg-gray-200 dark:text-black shadow transition-colors">
+          class="fixed top-20 right-6 px-3 py-1.5 rounded-full text-sm bg-gray-800 text-white dark:bg-gray-200 dark:text-black shadow transition-colors z-50">
     Dark
   </button>
 
   <!-- Main Container -->
-  <div class="max-w-4xl mx-auto px-6 pt-20 text-center">
+  <div class="max-w-4xl mx-auto px-6 pt-28 text-left">
 
     <!-- Header -->
     <header class="mb-16">
       <h1 class="text-3xl font-bold">Krushna Dash</h1>
-      <p class="mt-2 text-base text-gray-400 dark:text-gray-600">UT Computational Engineering + Mathematics</p>
-      <p class="mt-1 italic text-gray-500 dark:text-gray-500">Interested in Probabilistic Machine Learning and Robotics</p>
+      <p class="mt-2 text-base text-gray-400 dark:text-gray-600">
+        UT Computational Engineering + Mathematics
+      </p>
+      <p class="mt-1 italic text-gray-500 dark:text-gray-500">
+        Interested in Probabilistic Machine Learning and Robotics
+      </p>
     </header>
 
     <!-- Grid Layout -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
       <!-- Projects -->
-      <section class="space-y-4 font-sans">
+      <section id="projects" class="space-y-4">
         <h2 class="text-xl font-semibold">Projects</h2>
-         
+
         <div>
           <h3 class="font-medium">Uncertainty Aware Motion Forecasting</h3>
           <p class="text-sm text-gray-400 dark:text-gray-600">
@@ -58,45 +73,61 @@
           </p>
           <a href="https://github.com/Klutch42/Uncertainty-Aware-Motion-Forecasting"
              class="text-blue-400 dark:text-blue-600 hover:underline text-sm">
-             GitHub (temporarily private)
+            GitHub (temporarily private)
           </a>
         </div>
+
         <div>
           <h3 class="font-medium">Traffic Flow Simulation with Cellular Automata</h3>
           <p class="text-sm text-gray-400 dark:text-gray-600">
             Individual project
           </p>
-         </div>
+        </div>
+
         <div>
-          <h3 class="font-medium">SIR Outbreak Sim </h3>
+          <h3 class="font-medium">SIR Outbreak Simulation</h3>
           <p class="text-sm text-gray-400 dark:text-gray-600">
-            Model disease transmission and herd immunity dynamics
+            Modeling disease transmission and herd immunity dynamics
           </p>
-          
         </div>
       </section>
 
-      <!-- Math Notes -->
-      <section class="space-y-4 font-sans">
+      <!-- Notes -->
+      <section id="notes" class="space-y-4">
         <h2 class="text-xl font-semibold">Notes</h2>
         <ul class="space-y-2 text-sm">
-          <li><a href="#" class="hover:underline text-blue-400 dark:text-blue-600">Machine Learning Notes</a></li>
-          <li><a href="#" class="hover:underline text-blue-400 dark:text-blue-600">Stochastic Equations</a></li>
-          
+          <li>
+            <a href="#" class="hover:underline text-blue-400 dark:text-blue-600">
+              Machine Learning Notes
+            </a>
+          </li>
+          <li>
+            <a href="#" class="hover:underline text-blue-400 dark:text-blue-600">
+              Stochastic Equations
+            </a>
+          </li>
         </ul>
       </section>
 
-      <!-- Blog Posts -->
-      <section class="space-y-4 font-sans">
+      <!-- Blog / About -->
+      <section id="about" class="space-y-4">
         <h2 class="text-xl font-semibold">Blog Posts</h2>
         <ul class="space-y-2 text-sm">
           <li>
-            <a href="#" class="hover:underline text-blue-400 dark:text-blue-600">[Template] Why I like Probabilistic Models</a>
-            <span class="ml-2 text-gray-500 dark:text-gray-400 text-xs">Coming Soon</span>
+            <a href="#" class="hover:underline text-blue-400 dark:text-blue-600">
+              [Template] Why I like Probabilistic Models
+            </a>
+            <span class="ml-2 text-gray-500 dark:text-gray-400 text-xs">
+              Coming Soon
+            </span>
           </li>
           <li>
-            <a href="#" class="hover:underline text-blue-400 dark:text-blue-600">[Template] Robotics + ML: Where they meet</a>
-            <span class="ml-2 text-gray-500 dark:text-gray-400 text-xs">Coming soon</span>
+            <a href="#" class="hover:underline text-blue-400 dark:text-blue-600">
+              [Template] Robotics + ML: Where they meet
+            </a>
+            <span class="ml-2 text-gray-500 dark:text-gray-400 text-xs">
+              Coming Soon
+            </span>
           </li>
         </ul>
       </section>
@@ -104,7 +135,7 @@
     </div>
 
     <!-- Contact -->
-    <footer class="mt-16 text-center text-sm text-gray-500 dark:text-gray-600">
+    <footer class="mt-16 text-sm text-gray-500 dark:text-gray-600">
       contact: krushnadash [at] utexas [dot] edu
     </footer>
   </div>
@@ -115,15 +146,12 @@
       const html = document.documentElement;
       const toggle = document.getElementById('themeToggle');
 
-      // Load saved theme
       const saved = localStorage.getItem('theme');
       if (saved === 'dark') html.classList.add('dark');
       else html.classList.remove('dark');
 
-      // Set initial button text
       toggle.textContent = html.classList.contains('dark') ? 'Light' : 'Dark';
 
-      // Toggle dark/light mode on click
       toggle.addEventListener('click', () => {
         html.classList.toggle('dark');
         const isDark = html.classList.contains('dark');
