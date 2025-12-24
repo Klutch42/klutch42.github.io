@@ -28,13 +28,12 @@
 <body class="font-sans text-white bg-black dark:bg-white dark:text-black transition-colors duration-300 relative">
 
   <!-- Navigation Bar -->
-  <nav class="fixed top-0 left-0 w-full bg-black/80 dark:bg-white/80 backdrop-blur border-b border-gray-800 dark:border-gray-200 z-40">
-    <div class="max-w-4xl mx-auto px-6 h-14 flex items-center justify-between">
-      <span class="font-semibold text-sm">Krushna Dash</span>
-      <div class="flex space-x-6 text-sm text-gray-400 dark:text-gray-600">
-        <a href="#projects" class="hover:text-white dark:hover:text-black">Projects</a>
-        <a href="#notes" class="hover:text-white dark:hover:text-black">Notes & Blog</a>
-        <a href="#about" class="hover:text-white dark:hover:text-black">About</a>
+  <nav class="fixed top-0 left-0 w-full bg-black/80 dark:bg-white/80 backdrop-blur z-40">
+    <div class="max-w-4xl mx-auto px-6 h-14 flex items-center">
+      <div class="flex space-x-8 text-base text-gray-400 dark:text-gray-600">
+        <a href="index.html" class="hover:text-white dark:hover:text-black">About</a>
+        <a href="projects.html" class="hover:text-white dark:hover:text-black">Projects</a>
+        <a href="notes.html" class="hover:text-white dark:hover:text-black">Notes & Blog</a>
       </div>
     </div>
   </nav>
@@ -48,7 +47,7 @@
   <!-- Main Container -->
   <div class="max-w-4xl mx-auto px-6 pt-28 text-left">
 
-    <!-- Header -->
+    <!-- Header / About -->
     <header class="mb-16">
       <h1 class="text-3xl font-bold">Krushna Dash</h1>
       <p class="mt-2 text-base text-gray-400 dark:text-gray-600">
@@ -63,7 +62,7 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
       <!-- Projects -->
-      <section id="projects" class="space-y-4">
+      <section class="space-y-4">
         <h2 class="text-xl font-semibold">Projects</h2>
 
         <div>
@@ -93,7 +92,7 @@
       </section>
 
       <!-- Notes -->
-      <section id="notes" class="space-y-4">
+      <section class="space-y-4">
         <h2 class="text-xl font-semibold">Notes</h2>
         <ul class="space-y-2 text-sm">
           <li>
@@ -109,8 +108,8 @@
         </ul>
       </section>
 
-      <!-- Blog / About -->
-      <section id="about" class="space-y-4">
+      <!-- Blog -->
+      <section class="space-y-4">
         <h2 class="text-xl font-semibold">Blog Posts</h2>
         <ul class="space-y-2 text-sm">
           <li>
