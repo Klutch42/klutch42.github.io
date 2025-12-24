@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Projects | Krushna Dash</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet" />
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { fontFamily: { sans: ['Open Sans'] } } }
+    }
+  </script>
+</head>
+
+<body class="font-sans text-white bg-black dark:bg-white dark:text-black transition-colors">
+
+  <nav class="fixed top-0 left-0 w-full bg-black/80 dark:bg-white/80 backdrop-blur z-40">
+    <div class="max-w-4xl mx-auto px-6 h-14 flex items-center">
+      <div class="flex space-x-8 text-base text-gray-400 dark:text-gray-600">
+        <a href="index.html">About</a>
+        <a href="projects.html" class="text-white dark:text-black">Projects</a>
+        <a href="notes.html">Notes & Blog</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-4xl mx-auto px-6 pt-28 space-y-10">
+    <h1 class="text-2xl font-semibold">Projects</h1>
+
+    <section>
+      <h2 class="font-medium">Uncertainty Aware Motion Forecasting</h2>
+      <p class="text-sm text-gray-400 dark:text-gray-600">
+        Motion prediction for autonomous vehicles using Deep Kalman Filters and Variational RNNs.
+      </p>
+      <a href="https://github.com/Klutch42/Uncertainty-Aware-Motion-Forecasting"
+         class="text-blue-400 dark:text-blue-600 text-sm hover:underline">
+        GitHub (temporarily private)
+      </a>
+    </section>
+
+    <section>
+      <h2 class="font-medium">Traffic Flow Simulation with Cellular Automata</h2>
+      <p class="text-sm text-gray-400 dark:text-gray-600">
+        Individual project modeling macroscopic traffic dynamics using local interaction rules.
+      </p>
+    </section>
+
+    <section>
+      <h2 class="font-medium">SIR Outbreak Simulation</h2>
+      <p class="text-sm text-gray-400 dark:text-gray-600">
+        Simulation of infectious disease spread and herd immunity dynamics.
+      </p>
+    </section>
+  </main>
+
+</body>
+</html>
