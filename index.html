@@ -23,7 +23,7 @@
   </script>
 </head>
 
-<body class="font-sans text-white bg-black dark:bg-white dark:text-black transition-colors duration-300">
+<body class="font-sans bg-black text-white dark:bg-white dark:text-black transition-colors duration-300 antialiased">
 
   <!-- Nav -->
   <nav class="fixed top-0 left-0 w-full bg-black/80 dark:bg-white/80 backdrop-blur z-40">
@@ -44,24 +44,22 @@
 
   <main class="max-w-4xl mx-auto px-6 pt-28">
     <h1 class="text-3xl font-bold">Krushna Dash</h1>
-    <!--
-    <p class="mt-2 text-base text-gray-400 dark:text-gray-600">
-      UT Computational Engineering + Mathematics
-    </p>
-  
-    <p class="mt-1 italic text-gray-500 dark:text-gray-500">
-      Interested in Probabilistic Machine Learning and Robotics
-    </p>
-    -->
+
     <section class="mt-12 space-y-4 text-gray-400 dark:text-gray-600">
       <p>
-        I am a junior studying Computational Engineering and Mathematics at UT Austin, working primarily on AI research and tooling. My current role is at 
-        <span class="text-gray-400 dark:text-gray-600">
-    the Center for Space Research as an ML Research Assistant.
-        </span> 
+        I am a junior studying Computational Engineering and Mathematics at UT Austin, working primarily on AI research and tooling.
+        My current role is at
+        <span class="opacity-70 italic">
+          the Center for Space Research as an ML Research Assistant.
+        </span>
       </p>
+
       <p>
-        My work spans probabilistic and representation learning, including deep state-space models for motion forecasting, simulation-based modeling of nonlinear systems, and embedding-based semantic search. This work spans data modeling to evaluation and deployment, across both research and product-oriented projects. Current interests include robotics, scalable learning systems, and RL-adjacent methods for decision-making and control. 
+        My work spans probabilistic and representation learning, including deep state-space models for motion forecasting,
+        simulation-based modeling of nonlinear systems, and embedding-based semantic search. This work spans the full ML pipeline,
+        from data modeling to evaluation and deployment, across both research-driven and product-oriented projects. Current
+        interests include scalable learning systems, evaluation and robustness, RL-adjacent methods for decision-making and
+        control, and learning for robotics grounded in real-world dynamics.
       </p>
     </section>
 
@@ -75,8 +73,10 @@
       const html = document.documentElement;
       const toggle = document.getElementById('themeToggle');
       const saved = localStorage.getItem('theme');
+
       if (saved === 'dark') html.classList.add('dark');
       toggle.textContent = html.classList.contains('dark') ? 'Light' : 'Dark';
+
       toggle.onclick = () => {
         html.classList.toggle('dark');
         localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
@@ -84,5 +84,6 @@
       };
     });
   </script>
+
 </body>
 </html>
