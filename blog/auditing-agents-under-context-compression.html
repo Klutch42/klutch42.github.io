@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Residue studies which memory representations preserve the evidence an AI monitor needs to audit long-running agents.">
+  <title>Auditing Agents Under Context Compression — Krushna Dash</title>
+  <link rel="icon" href="../assets/favicon.png">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header class="site-header"><nav class="site-shell nav" aria-label="Primary navigation"><a class="wordmark" href="../index.html"><span class="mark"></span>Krushna Dash</a><div class="nav-group"><div class="nav-links"><a class="nav-link" href="../index.html">About</a><a class="nav-link" href="../projects.html">Projects</a><a class="nav-link active" href="../notes.html">Writing</a></div><button class="theme-toggle" data-theme-toggle aria-label="Toggle color theme">Light</button></div></nav></header>
+
+  <main class="article-shell">
+    <p class="eyebrow">Research note · 5 min read</p>
+    <h1>Auditing Agents Under Context Compression</h1>
+    <p class="article-meta">November 2026 · Krushna Dash</p>
+
+    <article class="article-body">
+      <p>Long-running agents create more history than a monitor can continuously inspect. They edit files, call tools, request permission, encounter denials, retry failed work, and react to changing policies. As the trace grows, the full record is usually replaced by a shorter representation: a recent context window, a summary, or a compact memory.</p>
+
+      <p>That compression creates a specific monitoring problem. An action can be unauthorized while the evidence proving it has already fallen out of view. A revocation may be omitted. A denial may be summarized too loosely. A repository version change may disappear as background detail. The monitor can reason perfectly from the context it receives and still reach the wrong conclusion.</p>
+
+      <h2>Evidence, not fluency</h2>
+
+      <p>Residue is a controlled experiment on that loss of evidence. The question is not whether a compressed history reads well. It is whether the representation preserves the particular event that makes an action permissible or forbidden—and whether a monitor can connect its judgment back to that event.</p>
+
+      <p>The proposed harness generates fictional agent histories from typed events: edit requests, patch proposals, approvals, denials, time-limited grants, repository version changes, and harmless background work. Every event has an ID, source, logical time, and relevant version information. An independent deterministic replay oracle calculates the current authorization state, providing stable ground truth without using a second language model to decide whether the first one crossed a boundary.</p>
+
+      <p>This event structure is important. A narrative summary may preserve the general story while dropping the one old denial that determines whether a later action is valid. A typed ledger may be less readable but retain the exact state transition. Residue treats those as measurable tradeoffs rather than assuming that a plausible summary contains what an auditor needs.</p>
+
+      <h2>Fixed-budget memory</h2>
+
+      <p>For the same underlying trace, the experiment compares a recent-window baseline, a narrative summary, a keyword-guided summary, a compact typed ledger, and an evidence-linked ledger with bounded retrieval. Each representation receives the same total token budget, including any evidence retrieved after the initial compression.</p>
+
+      <p>The monitor has two jobs. It must classify the proposed action, and it must cite the event IDs that support the decision. That second requirement separates detection from explanation. A monitor that flags a forbidden action while citing the wrong denial has not demonstrated the same result as one that identifies the precise revocation, version change, or expired grant responsible for the boundary.</p>
+
+      <p>The measurements follow from that distinction: unauthorized-action detection, false positives on benign actions, retention of decisive evidence, source-event retrieval accuracy, and the token or latency cost of reaching a judgment. A good representation should not merely produce correct labels. It should preserve a checkable path from the label back to the trace.</p>
+
+      <h2>Matched histories</h2>
+
+      <p>Residue uses paired histories that differ in one earlier authorization fact while sharing the same task and distracting events. I can vary trace length, the position of the decisive event, and the monitor’s context budget. The resulting comparison asks which representations keep the necessary evidence as the important event moves farther into the past.</p>
+
+      <p>This approach is informed by <a href="https://alignment.anthropic.com/2026/sleight-bench/" target="_blank" rel="noreferrer">SLEIGHT-Bench</a>, <a href="https://alignment.anthropic.com/2026/auditbench/" target="_blank" rel="noreferrer">AuditBench</a>, and <a href="https://arxiv.org/abs/2605.03378" target="_blank" rel="noreferrer">ARGUS</a>. Residue’s narrower target is evidence preservation under controlled context compression. The current work includes the methods paper, conceptual figures, architecture, evaluation plan, and development specification. Implementing the trace harness and model comparisons is the next experimental stage.</p>
+
+      <p>My scientific ML work has made me wary of metrics that average away the failure mode. A system-level monitoring score can hide which information vanished, much like aggregate forecast error can hide a geographic region where a model consistently fails. Residue makes evidence coverage explicit. If a monitor says an action was unauthorized, I want to know not only whether it was right, but what survived the compression that allowed it to know.</p>
+    </article>
+  </main>
+
+  <footer class="site-footer"><div class="site-shell"><div class="footer-bottom"><a href="../notes.html">← Back to writing</a><span>© 2026 Krushna Dash</span></div></div></footer>
+  <script src="../site.js"></script>
+</body>
+</html>
