@@ -17,31 +17,31 @@
     <p class="article-meta">October 2026 · Krushna Dash</p>
 
     <article class="article-body">
-      <p>While working on software security automation at IBM, I spent time around an ML-assisted vulnerability pipeline built with watsonx and Granite, Mend, GitHub, and Jira. The visible task was remediation: process findings, track issues, and propose fixes. The harder problem was controlling what happened around the fix—deduplicating work, gating pull requests on review, making retries idempotent, and leaving an audit trail.</p>
+      <p>At IBM, I worked on safeguards for an ML-assisted vulnerability pipeline built with watsonx and Granite, Mend, GitHub, and Jira. The pipeline processed findings and proposed fixes. My part of the problem lived around those fixes: deduplication, approval-gated pull requests, safe retries, and audit logs.</p>
 
-      <p>The question I kept returning to was what happens between approval and execution. A reviewer signs off on a patch. Then the repository advances, a dependency changes, the agent regenerates the diff, or the approval expires. The tool may still be capable of applying a patch. That does not mean the patch in front of it is still authorized.</p>
+      <p>I kept getting stuck on the time between approval and execution. A reviewer signs off on one patch. By the time an agent acts, the repository may have advanced, a dependency may have changed, or the agent may have generated a different diff. The approval might have expired too. The tool can still apply a patch, but which patch did the reviewer actually authorize?</p>
 
-      <h2>Authorization can drift</h2>
+      <h2>Authorization drifts</h2>
 
-      <p>Lapse is an experimental harness for measuring this gap. It tests whether coding agents and their surrounding tool policies preserve the actual scope of a user’s approval, rather than simply completing a repair. In the model I am testing, authorization binds together a task, a specific diff, a target repository revision, an allowed file scope, and a live grant. If one of those facts changes, execution requires a new decision.</p>
+      <p>Lapse is the harness I am building to measure that gap. It tracks whether a coding agent stays inside the scope a reviewer approved. An authorization record binds a task to a specific diff, target revision, file scope, and live grant. A change to any field invalidates the old decision.</p>
 
-      <p>This is easy to lose in an agent pipeline. Approval is often treated as a Boolean attached to a task: approved once, permitted later. But the thing a reviewer inspected may no longer be the thing an agent executes. A changed patch hash is not a clerical detail. Neither is a new base commit or an expired grant. They change the object of authorization.</p>
+      <p>Many pipelines store approval as a Boolean on the task: approved once, permitted later. That representation throws away what the reviewer saw. A new patch hash points to different code. A new base commit changes the state that code will enter. An expired grant changes the permission itself.</p>
 
       <h2>Paired interventions</h2>
 
-      <p>The evaluation uses controlled pairs of synthetic remediation episodes. Each episode begins with a fictional maintenance task, a patch proposal, and a simulated review decision. In one world, the approval remains valid. In the paired world, the harness changes exactly one fact before execution: revocation, TTL expiration under a virtual clock, a changed patch hash, a new repository base state, expanded file scope, or a duplicate retry.</p>
+      <p>The evaluation uses paired synthetic remediation episodes. Both runs begin with the same fictional maintenance task, patch proposal, and review decision. Before execution, one run receives a single intervention. The grant might be revoked or expire under a virtual clock. The patch hash, base revision, or file scope might change. Some pairs introduce a duplicate retry.</p>
 
-      <p>Keeping the rest of the task fixed makes the failure legible. If behavior changes, I can connect it to the authorization intervention rather than to a different prompt or repair. This is the same reason I rely on basin-level error analysis in my spatiotemporal ML work at UT Austin’s Center for Space Research: aggregate performance can hide the narrower failure that actually matters.</p>
+      <p>Everything else stays fixed. If the agent behaves differently, I can trace that difference to the intervention instead of a new prompt or repair. I use basin-level error analysis for a similar reason in my spatiotemporal ML work at UT Austin’s Center for Space Research. An average can look fine while one narrow failure keeps repeating.</p>
 
-      <p>A deterministic policy oracle tracks task, state, capability, action, and permission as separate objects. The runner records what the agent attempted, what the simulated tool executed, whether a valid repair completed, whether the system requested reapproval, and whether a retry produced duplicate effects. An agent requesting an unauthorized edit that the tool blocks is not the same failure as a repository being modified. A system that refuses every edit is not correct either; it has respected the boundary by abandoning the task.</p>
+      <p>A deterministic policy oracle tracks task state, capability, proposed action, and permission separately. The runner logs the agent’s request, the simulated tool’s response, reapproval requests, successful repairs, and duplicate effects. I score an unauthorized request that gets blocked differently from an unauthorized repository change. Blanket refusal also fails the task, even when it stays inside the boundary.</p>
 
       <h2>Binding approval to change</h2>
 
-      <p>The local methods prototype is written in Python and includes typed event schemas, fixture validation, a deterministic episode runner, pytest coverage, and a CLI for emitting JSONL traces, summary statistics, and figures. The experimental program compares several enforcement models: capability-only execution, approval checked once at proposal time, rules checked again at execution time, and grants cryptographically or structurally bound to exact patch hashes and repository versions. Version-pinned model-agent runs are the next empirical stage.</p>
+      <p>The local prototype is written in Python. It has typed event schemas, fixture validation, a deterministic episode runner, pytest coverage, and a CLI that emits JSONL traces and summary figures. The planned comparison ranges from capability-only execution to execution-time rule checks and grants bound to exact patch hashes and repository versions. Version-pinned model-agent runs come next.</p>
 
-      <p>Lapse draws from the broader authorization questions explored by <a href="https://arxiv.org/abs/2610.27548" target="_blank" rel="noreferrer">AuthorizationBench</a> and the <a href="https://github.com/OndCo/Agent-Action-Boundary-Benchmark" target="_blank" rel="noreferrer">Agent Action Boundary Benchmark</a>. Its focus is narrower: multi-stage software remediation, where time and repository state sit between a human decision and an agent action.</p>
+      <p><a href="https://arxiv.org/abs/2610.27548" target="_blank" rel="noreferrer">AuthorizationBench</a> and the <a href="https://github.com/OndCo/Agent-Action-Boundary-Benchmark" target="_blank" rel="noreferrer">Agent Action Boundary Benchmark</a> ask broader questions about agent authorization. Lapse focuses on multi-stage software remediation, where time and repository state sit between a human decision and the eventual tool call.</p>
 
-      <p>The distinction I care about is simple. A tool tells us what an agent can do. An approval should tell us exactly what it may do, to which state, and for how long. Lapse is an attempt to make the distance between those statements measurable.</p>
+      <p>A tool definition says what an agent can do. It says nothing about the exact change a person reviewed or how long that review should hold. Lapse puts those details into the experiment.</p>
     </article>
   </main>
 
